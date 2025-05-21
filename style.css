@@ -126,12 +126,53 @@ header {
     gap: 12px;
 }
 
-#parte-azul > img{
-    height: 82vh;
+#parte-azul{
+    background-color: #1F41C9;
     width: 99.2vw;
+    height: 40vh;
+    position: relative;
+}
+#parte-azul img {
+    height: 35vh;
+    margin: 2vh;
 }
 
-#Card-P{
+#texto-azul{
+    position: absolute;
+    top: 50px;
+    left: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: white;
+
+}
+
+#texto-azul h1 {
+    margin-bottom: 8px;
+    font-weight: bolder;
+    font-size: 6vh;
+}
+
+#texto-azul > div{
+    background-color: #D9AE00;
+    border: 2px solid transparent;
+    width: 12vw;
+    margin-bottom: 30px;
+}
+
+#texto-azul-span1{
+    font-size: 2.5vh;
+    margin-bottom: 6vh;
+}
+
+#texto-azul-span2{
+    font-size: 3.5vh;
+    
+}
+
+#Cards-P{
     padding: 40px;
     display: flex;
     flex-direction: row;
@@ -144,6 +185,27 @@ header {
     flex-direction: column;
     align-items: center;
     gap: 40px;
+}
+
+.img-card{
+    background-color: #1F41C9;
+    padding: 15px;
+    border-radius: 80px;
+}
+
+.img-card img {
+    height: auto;
+    width: 90px;
+}
+
+.texto-card{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #1F41C9;
+    border-radius: 12px;
+    color: white;
 }
 
 footer{
