@@ -104,10 +104,11 @@ header {
     align-items: center;
 }
 
-#pesquisar>input {
+#pesquisar input {
     width: 300px;
     height: 40px;
     padding-left: 50px;
+    border: 2px solid transparent;
     border-radius: 20px;
     background-color: rgb(236, 227, 227);
     background-image: url(./imgs/procurar.png);
@@ -115,6 +116,10 @@ header {
     background-position: 260px 8px;
 }
 
+#pesquisar img {
+    position: absolute;
+    right: 40px;
+}
 
 #home-2{
     display: flex;
@@ -131,6 +136,7 @@ header {
     width: 99.2vw;
     height: 40vh;
     position: relative;
+    margin-bottom: 30px;
 }
 #parte-azul img {
     height: 35vh;
@@ -208,16 +214,41 @@ header {
     color: white;
 }
 
+#hr3{
+    margin-top: 200px;
+}
+
 footer{
     display: flex;
     gap: 300px;
     padding-left: 50px;
     padding-right: 50px;
     padding-top: 30px;
-    padding-bottom: 500px;
+    padding-bottom: 200px;
 }
 
-footer > #Redes-Socias{
+#Redes-Socias{
     display: flex;
     gap: 15px;
+}
+
+#Redes-Socias img {
+    height: 25px;
+    width: 25px;
+}
+
+#listas{
+    display: flex;
+    flex-direction: row;
+    gap: 400px;
+}
+
+.footer-lista{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-lista-span1{
+    margin-bottom: 50px;
 }
