@@ -185,6 +185,8 @@ header {
 }
 
 .Card {
+    display: flex;
+    flex-direction: column;
     background-color: #1F41C9;
     padding-left: 15px;
     padding-right: 15px;
@@ -196,17 +198,6 @@ header {
 .Card span {
     font-size: 26px;
 }
-
-#Informacoes {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
 
 footer {
     display: flex;
