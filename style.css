@@ -226,13 +226,15 @@ footer {
     background-color: #071d41;
     display: flex;
     flex-direction: column;
-    gap: 100px;
     padding-left: 50px;
     padding-right: 50px;
     padding-top: 30px;
     padding-bottom: 200px;
 }
 
+.footer-lista-mobile {
+    display: none;
+}
 
 .listas {
     display: flex;
@@ -240,14 +242,21 @@ footer {
     gap: 15vh;
 }
 
-.footer-lista {
+.footer-desenvolvedores {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.footer-lista-span1 {
-    margin-bottom: 50px;
+.footer-lista-pc {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.listas span {
+    color: white;
+    font-size: 20px;
 }
 
 .govbr-logo {
@@ -261,17 +270,21 @@ footer {
 @media (max-width: 920px) {
 
     .parte-azul img,
-    .header .nav, .listas, .Redes-Socias {
+    .header .nav,
+    .Redes-Socias {
         display: none;
     }
+
     .Cards-P {
         display: flex;
         flex-direction: column;
-        
+
     }
+
     .icon-home>span {
         font-size: 5vw;
     }
+
     .home-c {
         display: flex;
         flex-direction: column;
@@ -280,9 +293,24 @@ footer {
         gap: 1px;
         margin-bottom: 2px;
     }
+
+    .footer-lista-mobile,
+    .listas {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-lista-pc {
+        display: none;
+    }
+
+    .footer-desenvolvedores {
+        margin-top: 20px;
+    }
 }
+
 hr {
     border: none;
     border-bottom: 1px solid #d6d6d6;
 }
-
