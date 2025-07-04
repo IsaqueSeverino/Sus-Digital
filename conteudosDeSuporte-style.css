@@ -4,81 +4,76 @@
     box-sizing: border-box;
 }
 
-html,
 body {
-    margin: 0;
-    padding: 0;
+    max-width: 100vw;
     overflow-x: hidden;
 }
 
-/* Header */
-
 header {
     padding: 30px;
-
 }
 
-#header {
+.header {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
 
-#img {
+.img {
     display: flex;
     flex-direction: row;
-    gap: 30px;
+    gap: 2vw;
     align-items: center;
     padding-left: 10px;
-
 }
 
-#img>img {
-    height: 40%;
-    width: 40%;
+.img > img {
+    width: 90px;
 }
 
-#button {
+.button {
     display: flex;
     flex-direction: row;
-    gap: 30px;
+    gap: 2vw;
     align-items: center;
     padding-right: 10px;
 }
 
-#button>button {
+.button > button {
     background-color: blue;
     color: white;
-    padding: 5px;
-    padding-left: 12px;
-    padding-right: 12px;
+    padding: 5px 12px;
     border-radius: 7px;
 }
 
-#nav {
+nav {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding-right: 280px;
 }
 
-#nav>nav>a {
+nav > a {
     padding: 17px;
+}
+
+a {
+    text-decoration: none;
 }
 
 .vl {
     border-left: 2px solid black;
     height: 55px;
-
 }
 
-#home {
-    padding-top: 5px;
-
+.home {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: white;
 }
 
-#home-c {
+.home-c {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -86,32 +81,31 @@ header {
     padding-right: 20px;
 }
 
-#icon-home {
-    padding: 15px 25px 15px;
+.icon-home {
+    padding: 15px 25px;
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 30px;
-
 }
 
-#icon-home>img {
+.icon-home > img {
     width: 30px;
     height: 30px;
-
 }
 
-#icon-home>span {
+.icon-home > span {
     font-size: 30px;
 }
 
-#pesquisar {
+.pesquisar {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-#pesquisar input {
+.pesquisar input {
+    max-width: 100%;
     width: 300px;
     height: 40px;
     padding-left: 50px;
@@ -120,64 +114,59 @@ header {
     background-color: rgb(236, 227, 227);
     background-image: url(./imgs/procurar.png);
     background-repeat: no-repeat;
-    background-position: 260px 8px;
+    background-position: right 8px center;
 }
 
-#pesquisar img {
+.pesquisar img {
     position: absolute;
     right: 40px;
 }
 
-#home-2 {
+.home-2 {
     display: flex;
-    padding-left: 28px;
-    padding-right: 28px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px 28px;
     align-items: center;
     gap: 12px;
 }
 
-#parte-azul {
+.parte-azul {
     background-color: #1F41C9;
-    width: 99.2vw;
+    width: 100%;
     height: 40vh;
     position: relative;
     margin-bottom: 30px;
+    display: flex;
 }
 
-#parte-azul img {
-    height: 35vh;
+.parte-azul img {
+    width: 200px;
     margin: 2vh;
+    position: absolute;
 }
 
-#texto-azul {
-    position: absolute;
-    top: 3.125rem;
-    left: 33.575rem;
+.texto-azul {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
     color: white;
-
+    margin: 10px auto;
 }
 
-#texto-azul h1 {
+.texto-azul h1 {
     margin-bottom: 8px;
     font-weight: bolder;
     font-size: 6vh;
-
 }
 
-#texto-azul>div {
+.texto-azul > div {
     background-color: #D9AE00;
     border: 2px solid transparent;
     width: 12vw;
     margin-bottom: 30px;
 }
 
-#texto-azul-span1 {
+.texto-azul-span1 {
     font-size: 3vh;
     margin-bottom: 6vh;
 }

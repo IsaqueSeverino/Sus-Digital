@@ -1,175 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Site</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
+  <body>
     <header>
-
-        <div id="header">
-
-            <div id="img">
-                <img src="assets/Gov.br_logo.svg.png" alt="gov">
-                <div class="vl"></div>
-            </div>
-
-            <div id="nav">
-                <nav>
-                    <a href="">Orgãos do Governo</a>
-                    <a href="">Acesso a Informação</a>
-                    <a href="">Legislação</a>
-                    <a href="">Acessibilidade</a>
-                </nav>
-            </div>
-
-            <div id="button">
-                <div class="vl"></div>
-                <button type="submit">Entrar com gov.br</button>
-            </div>
-
+      <div class="header">
+        <div class="img">
+          <img src="assets/Gov.br_logo.svg.png" alt="gov" />
+          <div class="vl"></div>
         </div>
 
+        <div class="nav">
+          <nav>
+            <a href="">Orgãos do Governo</a>
+            <a href="">Acesso a Informação</a>
+            <a href="">Legislação</a>
+            <a href="">Acessibilidade</a>
+          </nav>
+        </div>
+
+        <div class="button">
+          <div class="vl"></div>
+          <button type="submit">Entrar com gov.br</button>
+        </div>
+      </div>
     </header>
 
     <main>
+      <div class="home">
+        <hr class="hr1" />
+        <div class="home-c">
+          <div class="icon-home">
+            <img src="./assets/menu.png" alt="" />
+            <span>Ministério da Saúde</span>
+          </div>
 
-        <div id="home">
-            <hr id="hr1">
-            <div id="home-c">
-                <div id="icon-home">
-                    <img src="./assets/menu.png" alt="">
-                    <span>Ministério da Saúde</span>
-                </div>
+          <div class="pesquisar">
+            <input type="text" placeholder="O que você procura?" />
+            <!-- <img src="assets/icon.svg" alt="" /> -->
+          </div>
+        </div>
+        <hr class="hr2" />
+      </div>
 
-                <div id="pesquisar">
-                    <input type="text" placeholder="O que você procura?">
-                    <img src="assets/icon.svg" alt="">
-                </div>
+      <div class="home-2">
+        <img src="assets/silhueta-de-icone-de-casa 1.svg" alt="" />
+        <span>></span>
+        <a href="">Canais de Atendimento</a>
+        <span>></span>
+        <a href="">Suporte a Saúde Mental</a>
+      </div>
 
-            </div>
-            <hr id="hr2">
+      <section class="parte-azul">
+        <img src="assets/farmacia 1.svg" alt="" />
+
+        <div class="texto-azul">
+          <h1>Suporte a Saúde Mental</h1>
+          <div></div>
+          <span class="texto-azul-span1"
+            >Encontre apoio para sua saúde mental com informações, contatos de
+            profissionais e agendamento de consultas em um só lugar.</span
+          >
+          <span class="texto-azul-span2"
+            >Em momentos de Crise, não Hesite em ligar 188!</span
+          >
+        </div>
+      </section>
+
+      <section class="Cards-P">
+        <div class="Card">
+          <h1>Agende uma Consulta</h1>
+          <div class="img-card">
+            <a href="agendarConsulta.html" target="_blank"
+              ><img src="assets/agendar 1.svg" alt=""
+            /></a>
+          </div>
+          <div class="texto-card">
+            Agende sua consulta de forma rápida e fácil com profissionais
+            especializados em saúde mental.
+          </div>
         </div>
 
-        <div id="home-2">
-            <img src="assets/silhueta-de-icone-de-casa 1.svg" alt="">
-
-            <span>></span>
-
-            <a href="">Canais de Atendimento</a>
-
-            <span>></span>
-
-            <a href="">Suporte a Saúde Mental</a>
+        <div class="Card">
+          <h1>Conteúdos de Emergência</h1>
+          <div class="img-card">
+            <a href="conteudosDeEmergencia.html" target="_blank"
+              ><img src="assets/ligacao-de-emergencia 1.svg" alt=""
+            /></a>
+          </div>
+          <div class="texto-card">
+            Acesse conteúdos de apoio ou entre em contato com serviços de
+            emergência em casos de necessidade imediata.
+          </div>
         </div>
 
-        <section id="parte-azul">
-            <img src="assets/farmacia 1.svg" alt="">
-
-            <div id="texto-azul">
-                <h1>Suporte a Saúde Mental</h1>
-                <div></div>
-                <span id="texto-azul-span1">Encontre apoio para sua saúde mental com informações, contatos de
-                    profissionais e agendamento de
-                    consultas em um só lugar.</span>
-                <span id="texto-azul-span2">Em momentos de Crise, não Hesite em ligar 188!</span>
-
-            </div>
-        </section>
-
-        <section id="Cards-P">
-            <div class="Card">
-                <h1>Agende uma Consulta</h1>
-
-                <div class="img-card">
-                    <a href="agendarConsulta.html" target="_blank"><img src="assets/agendar 1.svg" alt=""></a>
-                </div>
-
-                <div class="texto-card">
-                    Agende sua consulta de forma rápida e fácil com profissionais especializados em saúde mental.
-                </div>
-            </div>
-
-            <div class="Card">
-                <h1>Conteúdos de Emergência</h1>
-
-                <div class="img-card">
-                    <a href="conteudosDeEmergencia.html" target="_blank"><img src="assets/ligacao-de-emergencia 1.svg" alt=""></a>
-                </div>
-
-                <div class="texto-card">
-                    Acesse conteúdos de apoio ou entre em contato com serviços de emergência em casos de necessidade
-                    imediata.
-                </div>
-            </div>
-
-            <div class="Card">
-                <h1>Conteúdos de Suporte</h1>
-
-                <div class="img-card">
-                    <a href="conteudosDeSuporte.html" target="_blank"><img src="assets/aperto-de-mao 1.svg" alt=""></a>
-                </div>
-
-                <div class="texto-card">
-                    Encontre conteúdos de suporte, como vídeos, artigos e materiais informativos para cuidar da sua
-                    saúde mental.
-                </div>
-            </div>
-        </section>
+        <div class="Card">
+          <h1>Conteúdos de Suporte</h1>
+          <div class="img-card">
+            <a href="conteudosDeSuporte.html" target="_blank"
+              ><img src="assets/aperto-de-mao 1.svg" alt=""
+            /></a>
+          </div>
+          <div class="texto-card">
+            Encontre conteúdos de suporte, como vídeos, artigos e materiais
+            informativos para cuidar da sua saúde mental.
+          </div>
+        </div>
+      </section>
     </main>
 
-    <hr id="hr3">
+    <hr class="hr3" />
 
     <footer>
-
-        <div id="Redes-Socias">
-            <img src="assets/X Logo.svg" alt="">
-            <img src="assets/Logo Instagram.svg" alt="">
-            <img src="assets/Logo YouTube.svg" alt="">
+      <div class="govbr-logo"></div>
+      <div class="listas">
+        <div class="footer-lista">
+          <span class="footer-lista-span1">Use cases</span>
+          <span>UI design</span>
+          <span>UX design</span>
+          <span>Wireframing</span>
+          <span>Diagramming</span>
+          <span>Brainstorming</span>
+          <span>Online whiteboard</span>
+          <span>Team collaboration</span>
         </div>
 
-        <div id="listas">
-            <div class="footer-lista">
-                <span class="footer-lista-span1">Use cases</span>
-
-                <span>UI design</span>
-                <span>UX design</span>
-                <span>Wireframing</span>
-                <span>Diagramming</span>
-                <span>Brainstorming</span>
-                <span>Online whiteboard</span>
-                <span>Team collaboration</span>
-            </div>
-
-            <div class="footer-lista">
-                <span class="footer-lista-span1">Explore</span>
-
-                <span>Design</span>
-                <span>Prototyping</span>
-                <span>Development features</span>
-                <span>Design systems</span>
-                <span>Collaboration features</span>
-                <span>Design process</span>
-                <span>FigJam</span>
-            </div>
-
-            <div class="footer-lista">
-                <span class="footer-lista-span1">Resources</span>
-
-                <span>Blog</span>
-                <span>Best practices</span>
-                <span>Colors</span>
-                <span>Color wheel</span>
-                <span>Support</span>
-                <span>Developers</span>
-                <span>Resource library</span>
-            </div>
+        <div class="footer-lista">
+          <span class="footer-lista-span1">Explore</span>
+          <span>Design</span>
+          <span>Prototyping</span>
+          <span>Development features</span>
+          <span>Design systems</span>
+          <span>Collaboration features</span>
+          <span>Design process</span>
+          <span>FigJam</span>
         </div>
+
+        <div class="footer-lista">
+          <span class="footer-lista-span1">Resources</span>
+          <span>Blog</span>
+          <span>Best practices</span>
+          <span>Colors</span>
+          <span>Color wheel</span>
+          <span>Support</span>
+          <span>Developers</span>
+          <span>Resource library</span>
+        </div>
+      </div>
+       
     </footer>
-</body>
-
+  </body>
 </html>

@@ -2,83 +2,80 @@
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
-html,
 body {
-    margin: 0;
-    padding: 0;
+    max-width: 100vw;
     overflow-x: hidden;
 }
 
-/* Header */
-
 header {
     padding: 30px;
-
 }
 
-#header {
+.header {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
 
-#img {
+.img {
     display: flex;
     flex-direction: row;
-    gap: 30px;
+    gap: 2vw;
     align-items: center;
     padding-left: 10px;
-
 }
 
-#img>img {
-    height: 40%;
-    width: 40%;
+.img>img {
+    width: 90px;
 }
 
-#button {
+.button {
     display: flex;
     flex-direction: row;
-    gap: 30px;
+    gap: 2vw;
     align-items: center;
     padding-right: 10px;
 }
 
-#button>button {
+.button>button {
     background-color: blue;
     color: white;
-    padding: 5px;
-    padding-left: 12px;
-    padding-right: 12px;
+    padding: 5px 12px;
     border-radius: 7px;
 }
 
-#nav {
+nav {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding-right: 280px;
 }
 
-#nav>nav>a {
+nav>a {
     padding: 17px;
+}
+
+a {
+    text-decoration: none;
+    color: #1351b4;
 }
 
 .vl {
     border-left: 2px solid black;
     height: 55px;
-
 }
 
-#home {
-    padding-top: 5px;
-
+.home {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: white;
 }
 
-#home-c {
+.home-c {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -86,176 +83,206 @@ header {
     padding-right: 20px;
 }
 
-#icon-home {
-    padding: 15px 25px 15px;
+.icon-home {
+    padding: 15px 25px;
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 30px;
-
 }
 
-#icon-home>img {
+.icon-home>img {
     width: 30px;
     height: 30px;
-
 }
 
-#icon-home>span {
+.icon-home>span {
     font-size: 30px;
 }
 
-#pesquisar {
+.pesquisar {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-#pesquisar input {
-    width: 300px;
+.pesquisar input {
+    max-width: 100%;
+    min-width: 300px;
+    width: 50vw;
     height: 40px;
     padding-left: 50px;
     border: 2px solid transparent;
-    border-radius: 20px;
+    border-radius: 5px;
     background-color: rgb(236, 227, 227);
-    background-image: url(./imgs/procurar.png);
+    background-image: url(/assets/procurar.png);
     background-repeat: no-repeat;
-    background-position: 260px 8px;
+    background-position: right 8px center;
 }
 
-#pesquisar img {
+.pesquisar img {
     position: absolute;
     right: 40px;
 }
 
-#home-2{
+.home-2 {
     display: flex;
-    padding-left: 28px;
-    padding-right: 28px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px 28px;
     align-items: center;
     gap: 12px;
 }
 
-#parte-azul{
-    background-color: #1F41C9;
-    width: 99.2vw;
-    height: 40vh;
+.parte-azul {
+    background-color: #071d41;
+    width: 100%;
+    /* height: 45vh; */
     position: relative;
     margin-bottom: 30px;
-}
-#parte-azul img {
-    height: 35vh;
-    margin: 2vh;
+    display: flex;
 }
 
-#texto-azul{
+.parte-azul img {
+    width: 200px;
+    margin: 2vh;
     position: absolute;
-    top: 50px;
-    left: 350px;
+}
+
+.texto-azul {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
     color: white;
-
+    margin: 20px auto;
 }
 
-#texto-azul h1 {
+.texto-azul h1 {
     margin-bottom: 8px;
     font-weight: bolder;
     font-size: 6vh;
+    text-align: center;
 }
 
-#texto-azul > div{
+.texto-azul>div {
     background-color: #D9AE00;
     border: 2px solid transparent;
     width: 12vw;
     margin-bottom: 30px;
 }
 
-#texto-azul-span1{
-    font-size: 2.5vh;
+.texto-azul-span1 {
+    font-size: 3vh;
     margin-bottom: 6vh;
+    text-align: center;
 }
 
-#texto-azul-span2{
+.texto-azul-span2 {
     font-size: 3.5vh;
-    
+    text-align: center;
+
 }
 
-#Cards-P{
-    padding: 40px;
+.Cards-P {
+    padding: 50px;
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 25px;
     align-items: center;
 }
 
-.Card{
+.Card {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 40px;
 }
 
-.img-card{
-    background-color: #1F41C9;
+.img-card {
+    background-color: #071d41;
     padding: 15px;
     border-radius: 80px;
 }
 
 .img-card img {
     height: auto;
-    width: 90px;
+    width: 70px;
 }
 
-.texto-card{
+.texto-card {
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 30px;
     padding-right: 30px;
-    background-color: #1F41C9;
+    background-color: #071d41;
     border-radius: 12px;
     color: white;
 }
 
-#hr3{
-    margin-top: 200px;
+.hr3 {
+    margin-top: 20px;
 }
 
-footer{
+footer {
+    background-color: #071d41;
     display: flex;
-    gap: 300px;
+    flex-direction: column;
+    gap: 100px;
     padding-left: 50px;
     padding-right: 50px;
     padding-top: 30px;
     padding-bottom: 200px;
 }
 
-#Redes-Socias{
-    display: flex;
-    gap: 15px;
-}
 
-#Redes-Socias img {
-    height: 25px;
-    width: 25px;
-}
-
-#listas{
+.listas {
     display: flex;
     flex-direction: row;
-    gap: 400px;
+    gap: 15vh;
 }
 
-.footer-lista{
+.footer-lista {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.footer-lista-span1{
+.footer-lista-span1 {
     margin-bottom: 50px;
 }
+
+.govbr-logo {
+    width: 165px;
+    height: 60px;
+    margin-bottom: 52px;
+    background-image: url(https://www.gov.br/++theme++padrao_govbr/img/govbr.png);
+    background-size: cover;
+}
+
+@media (max-width: 920px) {
+
+    .parte-azul img,
+    .header .nav, .listas, .Redes-Socias {
+        display: none;
+    }
+    .Cards-P {
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .icon-home>span {
+        font-size: 5vw;
+    }
+    .home-c {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1px;
+        margin-bottom: 2px;
+    }
+}
+hr {
+    border: none;
+    border-bottom: 1px solid #d6d6d6;
+}
+
