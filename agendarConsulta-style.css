@@ -29,7 +29,7 @@ header {
     padding-left: 10px;
 }
 
-.img > img {
+.img>img {
     width: 90px;
 }
 
@@ -41,7 +41,7 @@ header {
     padding-right: 10px;
 }
 
-.button > button {
+.button>button {
     background-color: blue;
     color: white;
     padding: 5px 12px;
@@ -54,7 +54,7 @@ nav {
     align-items: center;
 }
 
-nav > a {
+nav>a {
     padding: 17px;
 }
 
@@ -90,12 +90,12 @@ a {
     gap: 30px;
 }
 
-.icon-home > img {
+.icon-home>img {
     width: 30px;
     height: 30px;
 }
 
-.icon-home > span {
+.icon-home>span {
     font-size: 30px;
 }
 
@@ -175,13 +175,13 @@ a {
     text-align: center;
 }
 
-.parte-form > h1 {
+.parte-form>h1 {
     font-size: 4vh;
     margin-bottom: 30px;
     text-align: center;
 }
 
-.parte-form > form {
+.parte-form>form {
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
@@ -197,8 +197,9 @@ a {
 
 .select-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     position: relative;
+    gap: 12px;
 }
 
 .select-estilizado {
@@ -245,6 +246,36 @@ a {
     margin-bottom: 20px;
 }
 
+.estado {
+    height: 30px;
+    width: 450px;
+}
+
+.cidade {
+    height: 30px;
+    width: 450px;
+}
+
+.hospital {
+    height: 30px;
+    width: 450px;
+}
+
+.calendario {
+    height: 30px;
+    width: 450px;
+}
+
+.select-container button {
+    width: 100px;
+    padding: 10px 20px;
+    background-color: black;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    color: white;
+}
+
+/* 
 .card-especialista {
     display: flex;
     flex-direction: row;
@@ -268,7 +299,7 @@ a {
 .form-2 hr {
     width: 100%;
     margin: 5px 0;
-}
+} */
 
 /* .card-horarios {
     display: flex;
@@ -350,7 +381,8 @@ footer {
 @media (max-width: 920px) {
 
     .parte-azul img,
-    .header .nav, .vl {
+    .header .nav,
+    .vl {
         display: none;
     }
 
@@ -394,6 +426,6 @@ hr {
     border-bottom: 1px solid #d6d6d6;
 }
 
-.Card h1{
+.Card h1 {
     text-align: center;
 }
