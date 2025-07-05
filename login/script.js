@@ -1,22 +1,48 @@
-const cpfInput = document.getElementById('cpf');
+document.addEventListener('DOMContentLoaded', function () {
 
-cpfInput.addEventListener('input', function (e) {
+    const cpfInput = document.getElementById('cpf');
 
-    let value = e.target.value;
+    cpfInput.addEventListener('input', function (e) {
 
-    value = value.replace(/\D/g, '');
+        let value = e.target.value;
 
-    value = value.substring(0, 11);
+        value = value.replace(/\D/g, '');
 
-    if (value.length > 3 && value.length <= 6) {
+        value = value.substring(0, 11);
 
-        value = value.replace(/(\d{3})(\d)/, '$1.$2');
-    } else if (value.length > 6 && value.length <= 9) {
+        if (value.length > 3 && value.length <= 6) {
 
-        value = value.replace(/(\d{3})(\d{3})(\d)/, '$1.$2.$3');
-    } else if (value.length > 9) {
-        value = value.replace(/(\d{3})(\d{3})(\d{3})(\d)/, '$1.$2.$3-$4');
-    }
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+        } else if (value.length > 6 && value.length <= 9) {
 
-    e.target.value = value;
+            value = value.replace(/(\d{3})(\d{3})(\d)/, '$1.$2.$3');
+        } else if (value.length > 9) {
+            value = value.replace(/(\d{3})(\d{3})(\d{3})(\d)/, '$1.$2.$3-$4');
+        }
+
+        e.target.value = value;
+    });
+
+    const loginSenhaInput = document.getElementById('senha');
+    const entrarButton = document.getElementById('login-button');
+
+    entrarButton.addEventListener('click', function () {
+        const cpfDigitado = cpfInput.value;
+        const senhaDigitada = loginSenhaInput.value;
+
+        const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+        const usuarioEncontrado = usuarios.find(usuario =>
+            usuario.cpf === cpfDigitado && usuario.senha === senhaDigitada
+        );
+        if (usuarioEncontrado) {
+            alert(`✅ Bem-vindo(a), ${usuarioEncontrado.nome}!`);
+
+            sessionStorage.setItem('usuarioLogadoId', usuarioEncontrado.id);
+
+            window.location.href = '../paginaPrincipal/index.html';
+        } else {
+            alert('❌ CPF ou senha incorretos.');
+        }
+    });
 });
