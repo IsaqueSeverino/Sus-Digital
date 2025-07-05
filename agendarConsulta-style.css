@@ -175,8 +175,8 @@ a {
     text-align: center;
 }
 
-.parte-form>h1 {
-    font-size: 4vh;
+.parte-form h1 {
+    font-size: clamp(15px, 5vw, 20px);
     margin-bottom: 30px;
     text-align: center;
 }
@@ -418,6 +418,40 @@ footer {
 
     .footer-desenvolvedores {
         margin-top: 20px;
+    }
+
+    .parte-form .form-1 {
+        align-items: center;
+    }
+}
+
+@media (max-width: 620px) {
+    .estado {
+        height: 30px;
+        max-width: 450px;
+        width: 80vw;
+        min-width: 100px;
+    }
+
+    .cidade {
+        height: 30px;
+        max-width: 450px;
+        width: 80vw;
+        min-width: 100px;
+    }
+
+    .hospital {
+        height: 30px;
+        max-width: 450px;
+        width: 80vw;
+        min-width: 100px;
+    }
+
+    .calendario {
+        height: 30px;
+        max-width: 450px;
+        width: 80vw;
+        min-width: 100px;
     }
 }
 

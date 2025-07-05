@@ -181,14 +181,14 @@ a {
     display: flex;
     flex-direction: row;
     gap: 2vw;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
     margin-bottom: 30px;
 }
 
 .Card {
-    width: 400px;
-    height: 500px;
+    width: 30vw;
+    /* height: 500px; */
     display: flex;
     flex-direction: column;
     background-color: #071d41;
@@ -199,14 +199,14 @@ a {
 }
 
 .Card h1 {
-    font-size: 28px;
+    font-size: clamp(15px, 5vw, 20px);
     text-align: center;
     margin-bottom: 20px;
 }
 
 .Card h2 {
-    font-size: 18px;
-    text-align: center;
+    font-size: clamp(13px, 5vw, 18px);
+    text-align: -webkit-auto;
     margin-bottom: 10px;
 }
 
@@ -317,10 +317,15 @@ footer {
     .footer-desenvolvedores {
         margin-top: 20px;
     }
-    .Cards{
+
+    .Cards {
         display: flex;
         flex-direction: column;
+        align-items: center;
+    }
 
+    .Card {
+        width: 70vw;
     }
 }
 
