@@ -2,6 +2,7 @@
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 body {
@@ -106,13 +107,14 @@ a {
 
 .pesquisar input {
     max-width: 100%;
-    width: 300px;
+    min-width: 300px;
+    width: 50vw;
     height: 40px;
     padding-left: 50px;
     border: 2px solid transparent;
-    border-radius: 20px;
+    border-radius: 5px;
     background-color: rgb(236, 227, 227);
-    background-image: url(./imgs/procurar.png);
+    background-image: url(/assets/procurar.png);
     background-repeat: no-repeat;
     background-position: right 8px center;
 }
@@ -130,16 +132,16 @@ a {
 }
 
 .parte-azul {
-    background-color: #1F41C9;
+    background-color: #071d41;
     width: 100%;
-    height: 40vh;
+    padding: 0 10px;
     position: relative;
     margin-bottom: 30px;
     display: flex;
 }
 
 .parte-azul img {
-    width: 200px;
+    width: 100px;
     margin: 2vh;
     position: absolute;
 }
@@ -148,27 +150,29 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
     color: white;
-    margin: 10px auto;
+    margin: 20px auto;
 }
 
 .texto-azul h1 {
     margin-bottom: 8px;
     font-weight: bolder;
-    font-size: 6vh;
+    font-size: clamp(22px, 5vw, 30px);
+    text-align: center;
 }
 
-.texto-azul > div {
+.texto-azul>div {
     background-color: #D9AE00;
     border: 2px solid transparent;
     width: 12vw;
-    margin-bottom: 30px;
+    margin-bottom: 8px;
 }
 
 .texto-azul-span1 {
-    font-size: 3vh;
-    margin-bottom: 6vh;
+    font-size: clamp(15px, 5vw, 20px);
+    margin-bottom: 3vh;
+    text-align: center;
 }
 
 .parte-form > h1 {
@@ -179,9 +183,10 @@ a {
 
 .parte-form > form {
     display: flex;
-    margin-left: 1.875rem;
     flex-direction: column;
     gap: 1.25rem;
+    margin: 0 auto;
+    width: 98%;
 }
 
 .parte-form .form-1 {
@@ -298,39 +303,97 @@ a {
 }
 
 footer {
+    background-color: #071d41;
     display: flex;
-    gap: 3px;
-    padding: 30px 50px 200px 50px;
+    flex-direction: column;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 30px;
+    padding-bottom: 200px;
 }
 
-.Redes-Socias {
-    display: flex;
-    gap: 15px;
-}
-
-.Redes-Socias img {
-    height: 25px;
-    width: 25px;
+.footer-lista-mobile {
+    display: none;
 }
 
 .listas {
     display: flex;
     flex-direction: row;
-    gap: 100px;
+    gap: 15vh;
 }
 
-.footer-lista {
+.footer-desenvolvedores {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.footer-lista-span1 {
-    margin-bottom: 50px;
+.footer-lista-pc {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.listas span {
+    color: white;
+    font-size: 20px;
+}
+
+.govbr-logo {
+    width: 165px;
+    height: 60px;
+    margin-bottom: 52px;
+    background-image: url(https://www.gov.br/++theme++padrao_govbr/img/govbr.png);
+    background-size: cover;
 }
 
 @media (max-width: 920px) {
-    .parte-azul img, .header .nav {
+
+    .parte-azul img,
+    .header .nav, .vl {
         display: none;
     }
+
+    .Cards-P {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .icon-home>span {
+        font-size: 5vw;
+    }
+
+    .home-c {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1px;
+        margin-bottom: 2px;
+    }
+
+    .footer-lista-mobile,
+    .listas {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-lista-pc {
+        display: none;
+    }
+
+    .footer-desenvolvedores {
+        margin-top: 20px;
+    }
+}
+
+hr {
+    border: none;
+    border-bottom: 1px solid #d6d6d6;
+}
+
+.Card h1{
+    text-align: center;
 }
