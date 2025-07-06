@@ -1,0 +1,180 @@
+/* Importando a fonte e os ícones para maior fidelidade visual */
+@import url('https://fonts.cdnfonts.com/css/rawline');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+:root {
+    --gov-blue: #0076c0;
+    --gov-blue-hover: #04598f;
+    --gov-green: #007C32;
+    --gov-green-hover: #005c25;
+    --gov-text-primary: #1e1e1e;
+    --gov-text-secondary: #4f4f4f;
+    --gov-border-color: #ccc;
+    --gov-background-light: #f8f8f8;
+}
+
+body {
+    font-family: 'Rawline', sans-serif;
+    margin: 0;
+    background-color: var(--gov-background-light);
+    color: var(--gov-text-primary);
+}
+
+.gov-header {
+    background-color: white;
+    padding: 16px 40px;
+    border-bottom: 3px solid #e0e0e0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: center;
+}
+
+.gov-header > div {
+    display: flex;
+    justify-items: center;
+    gap: 40px;
+}
+
+.gov-header > div div {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    
+}
+
+.gov-header a {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+
+.gov-logo {
+    height: 30px;
+}
+
+.emoji-contraste {
+    height: auto;
+    width: 18px;
+}
+
+.emoji-vlibras{
+    height: auto;
+    width: 18px;
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-box {
+    background-color: white;
+    padding: 32px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+}
+
+.login-box h1 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-size: 0.875rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid var(--gov-border-color);
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: black;
+    background-color: #f2e31759;
+}
+
+.registrar-button {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--gov-blue);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 24px;
+    transition: background-color 0.2s;
+}
+
+.registrar-button:hover {
+    background-color: var(--gov-blue-hover);
+}
+
+.separator {
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+    line-height: 0.1em;
+    margin: 32px 0;
+}
+
+.separator span {
+    background: white;
+    padding: 0 10px;
+    color: var(--gov-text-secondary);
+}
+
+.other-options-title {
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--gov-text-primary);
+}
+
+.other-options a {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    border: 1px solid var(--gov-border-color);
+    text-decoration: none;
+    color: var(--gov-blue);
+    font-weight: 700;
+    transition: background-color 0.2s;
+}
+
+.other-options a:hover {
+    background-color: #eaf4fa;
+}
+
+.other-options .fa-solid {
+    font-size: 1.5rem;
+    margin-right: 16px;
+    width: 24px;
+    /* Alinha o texto */
+    text-align: center;
+}

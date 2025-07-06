@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Gov.br</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="gov-header">
+        <img src="../assets/govbr.png" alt="Logo Gov.br" class="gov-logo">
+
+        <div>
+            <div>
+                <img src="../assets/contraste.png" alt="Emoji Contraste" class="emoji-contraste">
+                <a href="">Alto Contraste</a>
+            </div>
+
+            <div>
+                <img src="../assets/surdo.png" alt="Emoji Ouvido" class="emoji-vlibras">
+                <a href="">VLibras</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+
+        <img src="../assets/logo_sus_digital-e1734524101723.png" alt="">
+
+        <div class="login-box">
+
+            <h1>Acesse sua conta gov.br</h1>
+            <form action="javascript:void(0);">
+                <div class="form-group">
+                    <div>
+                        <label for="cpf">Digite seu CPF</label>
+                        <input type="text" id="cpf" name="cpf" placeholder="Digite seu CPF">
+                    </div>
+
+                    <div>
+                        <label for="senha">Digite sua senha</label>
+                        <input type="password" id="senha" name="senha" placeholder="Digite sua Senha">
+                    </div>
+                </div>
+                <button type="button" class="login-button" id="login-button">Continuar</button>
+
+                <span>Não possui conta? Acesse <a href="../registrar/index.html" target="_blank">aqui</a> para criar sua conta!</span>
+            </form>
+
+            <div class="separator"><span>ou</span></div>
+
+            <p class="other-options-title">Outras opções de identificação:</p>
+            <div class="other-options">
+                <a href="#">
+                    <i class="fa-solid fa-qrcode"></i>
+                    <span>Ler QR code</span>
+                </a>
+                <a href="#">
+                    <i class="fa-solid fa-cloud"></i>
+                    <span>Seu certificado digital em nuvem</span>
+                </a>
+                <a href="#">
+                    <i class="fa-solid fa-id-card"></i>
+                    <span>Seu certificado digital</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
