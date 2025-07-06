@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
         alert('✅ Cadastro realizado com sucesso!');
         console.log('Usuário salvo com ID:', novoUsuario);
 
-        window.location.href = '../login/index.html';
+        window.location.href = '../index.html';
     })
 
 });
