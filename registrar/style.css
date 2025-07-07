@@ -177,6 +177,52 @@ body {
     text-align: center;
 }
 
+html.alto-contraste body {
+    background-color: black;
+    color: white;
+}
+
+html.alto-contraste .gov-header {
+    background-color: black;
+    border-bottom: 3px solid black;
+}
+
+html.alto-contraste .login-box{
+    background-color: black;
+}
+
+html.alto-contraste .form-container {
+    background-color: black;
+    border: 2px solid yellow;
+}
+
+html.alto-contraste h1,
+html.alto-contraste label {
+    color: white;
+}
+
+html.alto-contraste .header-form,
+html.alto-contraste .switch-form {
+    border-color: yellow;
+}
+
+html.alto-contraste a {
+    color: yellow;
+}
+
+html.alto-contraste input[type="text"],
+html.alto-contraste input[type="email"],
+html.alto-contraste input[type="password"] {
+    background-color: black;
+    color: yellow;
+    border: 1px solid yellow;
+}
+
+html.alto-contraste button {
+    background-color: yellow;
+    color: black;
+}
+
 @media (max-width: 768px) {
     .gov-header {
         padding: 16px 20px;

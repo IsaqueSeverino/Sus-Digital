@@ -87,4 +87,20 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.href = '../index.html';
     })
 
+    const toggleContrasteBtn = document.getElementById('toggle-contraste');
+
+    if (toggleContrasteBtn) {
+        toggleContrasteBtn.addEventListener('click', function(event) {
+            event.preventDefault();
+            
+            document.documentElement.classList.toggle('alto-contraste');
+
+            if (document.documentElement.classList.contains('alto-contraste')) {
+                localStorage.setItem('modoContraste', 'ativo');
+            } else {
+                localStorage.setItem('modoContraste', 'inativo');
+            }
+        });
+    }
+
 });

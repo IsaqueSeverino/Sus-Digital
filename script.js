@@ -40,9 +40,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
             sessionStorage.setItem('usuarioLogadoId', usuarioEncontrado.id);
 
-            window.location.href = '/html/index.html';
+            window.location.href = 'Sus-Digital/html/index.html';
         } else {
             alert('❌ CPF ou senha incorretos.');
         }
     });
+
+    const toggleContrasteBtn = document.getElementById('toggle-contraste');
+
+    if (toggleContrasteBtn) {
+        toggleContrasteBtn.addEventListener('click', function(event) {
+            event.preventDefault();
+            
+            document.documentElement.classList.toggle('alto-contraste');
+
+            if (document.documentElement.classList.contains('alto-contraste')) {
+                localStorage.setItem('modoContraste', 'ativo');
+            } else {
+                localStorage.setItem('modoContraste', 'inativo');
+            }
+        });
+    }
 });
