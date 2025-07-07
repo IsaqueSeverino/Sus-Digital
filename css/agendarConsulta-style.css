@@ -63,37 +63,42 @@ a {
 }
 
 .btn-horario.indisponivel {
-  background-color: #e9ecef; 
-  color: #6c757d;           
-  text-decoration: line-through; 
-  cursor: not-allowed;        
+    background-color: #e9ecef;
+    color: #6c757d;
+    text-decoration: line-through;
+    cursor: not-allowed;
 }
 
 
 #lista-agendamentos li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px; 
+   display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    margin-block: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 4px 10px;
 }
 
 .btn-excluir {
-  background-color: #dc3545; 
-  color: white;
-  border: none;
-  border-radius: 50%; 
-  width: 24px;
-  height: 24px;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 14px;
-  line-height: 24px; 
-  text-align: center;
-  margin-left: 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: clamp(28px, 5vw, 24px);
+    height: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    margin-left: 10px;
 }
 
 .btn-excluir:hover {
-  background-color: #c82333; 
+    background-color: #c82333;
 }
 
 .vl {
@@ -150,7 +155,7 @@ a {
     background-color: rgb(236, 227, 227);
     /* --- CORREÇÃO IMPORTANTE ---
        O caminho da imagem precisa ser relativo ao ficheiro CSS. */
-    background-image: url(../assets/procurar.png); 
+    background-image: url(../assets/procurar.png);
     background-repeat: no-repeat;
     background-position: right 8px center;
 }
@@ -214,11 +219,13 @@ a {
 .container {
     display: grid;
     grid-template-columns: 50% 50%;
-    margin-bottom: 20px ;
-    padding: 0 20px; /* Adicionado um preenchimento para espaçamento */
+    margin-bottom: 20px;
+    padding: 0 20px;
+    /* Adicionado um preenchimento para espaçamento */
 }
 
-.parte-form h1, .parte-horario h1 {
+.parte-form h1,
+.parte-horario h1 {
     font-size: clamp(15px, 5vw, 20px);
     margin-bottom: 30px;
     text-align: center;
@@ -244,8 +251,10 @@ a {
     position: relative;
     gap: 12px;
     margin: 0 auto;
-    width: 100%; /* Garante que o container ocupe o espaço */
-    max-width: 450px; /* Define uma largura máxima */
+    width: 100%;
+    /* Garante que o container ocupe o espaço */
+    max-width: 450px;
+    /* Define uma largura máxima */
 }
 
 .select-estilizado {
@@ -293,10 +302,16 @@ a {
     margin-bottom: 20px;
 }
 
-.estado, .cidade, .hospital, .calendario {
-    height: 40px; /* Aumentado para melhor toque */
-    width: 100%; /* Ocupa a largura do container */
-    padding: 0 10px; /* Adiciona preenchimento interno */
+.estado,
+.cidade,
+.hospital,
+.calendario {
+    height: 40px;
+    /* Aumentado para melhor toque */
+    width: 100%;
+    /* Ocupa a largura do container */
+    padding: 0 10px;
+    /* Adiciona preenchimento interno */
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -304,59 +319,66 @@ a {
 
 
 .select-container button {
-    width: auto; /* Largura automática baseada no conteúdo */
-    align-self: flex-start; /* Alinha o botão à esquerda */
+    width: auto;
+    /* Largura automática baseada no conteúdo */
+    align-self: flex-start;
+    /* Alinha o botão à esquerda */
     margin-top: 10px;
 }
 
 /* NOVOS ESTILOS PARA HORÁRIOS */
 .parte-horario {
-  display: none; /* Começa escondido */
-  padding-left: 40px;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
+    display: none;
+    /* Começa escondido */
+    padding-left: 40px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    gap: 1.25rem;
+    margin: 0 auto;
+    width: 98%;
 }
 
 .horarios-container {
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
 .periodo-titulo {
-  font-weight: bold;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  color: #333;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #333;
 }
 
 .horarios-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-  gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 10px;
 }
 
 .btn-horario {
-  padding: 10px;
-  font-size: 16px;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  cursor: pointer;
-  text-align: center;
-  transition: background-color 0.3s, color 0.3s;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .btn-horario:hover {
-  background-color: #e0e0e0;
+    background-color: #e0e0e0;
 }
 
 .btn-horario.selecionado {
-  background-color: #007bff;
-  color: white;
-  border-color: #0056b3;
+    background-color: #007bff;
+    color: white;
+    border-color: #0056b3;
 }
 
 #btn-confirmar {
-    display: none; /* Começa escondido */
+    display: none;
+    /* Começa escondido */
     width: 100%;
     padding: 15px;
     margin-top: 30px;
@@ -439,12 +461,15 @@ footer {
 
     /* Modificação para empilhar em telas menores */
     .container {
-        grid-template-columns: 1fr; /* Coluna única */
-        gap: 40px; /* Espaçamento entre as seções */
+        grid-template-columns: 1fr;
+        /* Coluna única */
+        gap: 40px;
+        /* Espaçamento entre as seções */
     }
 
     .parte-horario {
-        padding-left: 0; /* Remove o padding extra */
+        padding-left: 0;
+        /* Remove o padding extra */
     }
 
     .footer-lista-mobile,
@@ -465,9 +490,33 @@ footer {
     .parte-form .form-1 {
         align-items: center;
     }
+    .btn-excluir{
+        min-width:26px;
+    }
 }
 
 hr {
     border: none;
     border-bottom: 1px solid #d6d6d6;
 }
+
+#agendamentos-salvos-container h3{
+    text-align: center;
+}
+
+#btn-confirmar {
+    display: none;
+    /* Começa escondido */
+    width: 80%;
+    padding: 15px;
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px auto;
+}
+
