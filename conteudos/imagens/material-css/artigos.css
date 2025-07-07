@@ -288,7 +288,7 @@ hr {
 }
 
 .link-box a {
-    font-size: 20px;
+    font-size: clamp(18px, 3vw, 20px);
     font-weight: bold;
     color: #0a4c8c;
     display: inline-block;
@@ -304,4 +304,13 @@ hr {
 
 .link-box p strong {
     color: #0a4c8c;
+}
+
+section h2{
+    text-align: center;
+    font-size: clamp(18px, 3vw, 24px);
+}
+
+section{
+    padding: 0 2vw;
 }
