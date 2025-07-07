@@ -1,0 +1,265 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+header {
+    padding: 30px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.img {
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.img>img {
+    width: 90px;
+}
+
+.button {
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.button>button {
+    background-color: blue;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 7px;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+nav>a {
+    padding: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.vl {
+    border-left: 2px solid black;
+    height: 55px;
+}
+
+.home {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: white;
+}
+
+.home-c {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 20px;
+}
+
+.icon-home {
+    padding: 15px 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+}
+
+.icon-home>img {
+    width: 30px;
+    height: 30px;
+}
+
+.icon-home>span {
+    font-size: 30px;
+}
+
+.pesquisar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.pesquisar input {
+    max-width: 100%;
+    min-width: 300px;
+    width: 50vw;
+    height: 40px;
+    padding-left: 50px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    background-color: rgb(236, 227, 227);
+    background-image: url(/assets/procurar.png);
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+}
+
+.pesquisar img {
+    position: absolute;
+    right: 40px;
+}
+
+.home-2 {
+    display: flex;
+    padding: 10px 28px;
+    align-items: center;
+    gap: 12px;
+}
+
+.parte-azul {
+    background-color: #071d41;
+    width: 100%;
+    padding: 0 10px;
+    position: relative;
+    display: flex;
+}
+
+.parte-azul img {
+    width: 100px;
+    margin: 2vh;
+    /* position: absolute; */
+}
+
+.texto-azul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    color: white;
+    margin: 20px auto;
+}
+
+.texto-azul h1 {
+    margin-bottom: 8px;
+    font-weight: bolder;
+    font-size: clamp(22px, 5vw, 30px);
+    text-align: center;
+}
+
+.texto-azul>div {
+    background-color: #D9AE00;
+    border: 2px solid transparent;
+    width: 12vw;
+    margin-bottom: 8px;
+}
+
+.texto-azul-span1 {
+    font-size: clamp(15px, 5vw, 20px);
+    margin-bottom: 3vh;
+    text-align: center;
+}
+
+/* rodape */
+footer {
+    background-color: #071d41;
+    display: flex;
+    flex-direction: column;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 30px;
+    padding-bottom: 200px;
+}
+
+.footer-lista-mobile {
+    display: none;
+}
+
+.listas {
+    display: flex;
+    flex-direction: row;
+    gap: 15vh;
+}
+
+.footer-desenvolvedores {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-lista-pc {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.listas span {
+    color: white;
+    font-size: 20px;
+}
+
+.govbr-logo {
+    width: 165px;
+    height: 60px;
+    margin-bottom: 52px;
+    background-image: url(https://www.gov.br/++theme++padrao_govbr/img/govbr.png);
+    background-size: cover;
+}
+
+/* mobile  */
+
+@media (max-width: 920px) {
+
+
+    .header .nav,
+    .vl {
+        display: none;
+    }
+
+    .icon-home>span {
+        font-size: 5vw;
+    }
+
+    .home-c {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1px;
+        margin-bottom: 2px;
+    }
+
+    .footer-lista-mobile,
+    .listas {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-lista-pc {
+        display: none;
+    }
+
+    .footer-desenvolvedores {
+        margin-top: 20px;
+    }
+}
+
+hr {
+    border: none;
+    border-bottom: 1px solid #d6d6d6;
+}
