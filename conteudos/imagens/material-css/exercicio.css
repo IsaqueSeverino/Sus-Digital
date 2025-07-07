@@ -263,3 +263,63 @@ hr {
     border: none;
     border-bottom: 1px solid #d6d6d6;
 }
+
+.exercicio-box {
+    background-color: #fff;
+    border-left: 5px solid #0a4c8c;
+    padding: 20px;
+    margin: 30px auto;
+    max-width: 900px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.exercicio-box iframe {
+    width: 100%;
+    height: clamp(200px, 50vw, 400px);
+    border: none;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.exercicio-box p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+}
+
+.exercicio-box p strong {
+    display: block;
+    margin-top: 10px;
+    color: #0a4c8c;
+}
+
+.exercicio-box a {
+    color: #0a4c8c;
+    text-decoration: underline;
+}
+
+.artigo-box {
+    background-color: #f9f9f9;
+    border-left: 5px solid #d9ae00;
+    padding: 20px;
+    margin: 30px auto;
+    max-width: 900px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.artigo-box h3 {
+    margin-bottom: 10px;
+    color: #0a4c8c;
+}
+
+.artigo-box p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+}
+
+.exercicos, .artigos {
+    margin: 0 2vw;
+}
