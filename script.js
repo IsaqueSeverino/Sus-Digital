@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             sessionStorage.setItem('usuarioLogadoId', usuarioEncontrado.id);
 
-            window.location.href = '/html/index.html';
+            window.location.href = 'Sus-Digital/html/index.html';
         } else {
             alert('❌ CPF ou senha incorretos.');
         }
