@@ -264,3 +264,44 @@ hr {
     border: none;
     border-bottom: 1px solid #d6d6d6;
 }
+
+.conteudo-artigos {
+    padding: 30px 20px;
+    background-color: #f9f9f9;
+}
+
+.conteudo-artigos h2 {
+    text-align: center;
+    color: #071d41;
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+.link-box {
+    background-color: white;
+    border-left: 5px solid #0a4c8c;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 900px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.link-box a {
+    font-size: 20px;
+    font-weight: bold;
+    color: #0a4c8c;
+    display: inline-block;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+.link-box p {
+    font-size: 16px;
+    color: #333;
+    margin: 6px 0;
+}
+
+.link-box p strong {
+    color: #0a4c8c;
+}
