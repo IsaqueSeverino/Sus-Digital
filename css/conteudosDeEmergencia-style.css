@@ -33,19 +33,11 @@ header {
     width: 90px;
 }
 
-.button {
+.perfil{
     display: flex;
     flex-direction: row;
-    gap: 2vw;
     align-items: center;
-    padding-right: 10px;
-}
-
-.button>button {
-    background-color: blue;
-    color: white;
-    padding: 5px 12px;
-    border-radius: 7px;
+    gap: 16px;
 }
 
 nav {
