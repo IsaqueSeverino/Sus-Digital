@@ -175,7 +175,14 @@ a {
     text-align: center;
 }
 
-.parte-form h1 {
+.container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-bottom: 20px ;
+
+}
+
+.parte-form h1, .parte-horario h1 {
     font-size: clamp(15px, 5vw, 20px);
     margin-bottom: 30px;
     text-align: center;
@@ -200,6 +207,7 @@ a {
     flex-direction: column;
     position: relative;
     gap: 12px;
+    margin: 0 auto;
 }
 
 .select-estilizado {
@@ -406,7 +414,7 @@ footer {
     }
 
     .footer-lista-mobile,
-    .listas {
+    .listas, .container {
         display: flex;
         flex-direction: column;
         gap: 10px;

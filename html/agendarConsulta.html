@@ -1,83 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Agendar Consulta</title>
-    <link rel="stylesheet" href="../css/agendarConsulta-style.css" />
-  </head>
 
-  <body>
-    <header>
-      <div class="header">
-        <div class="img">
-          <img src="../assets/Gov.br_logo.svg.png" alt="gov" />
-          <div class="vl"></div>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agendar Consulta</title>
+  <link rel="stylesheet" href="../css/agendarConsulta-style.css" />
+</head>
 
-        <div class="nav">
-          <nav>
-            <a href="https://www.gov.br/pt-br/orgaos-do-governo"
-              >Orgãos do Governo</a
-            >
-            <a href="https://www.gov.br/acessoainformacao/pt-br"
-              >Acesso a Informação</a
-            >
-            <a href="http://www4.planalto.gov.br/legislacao">Legislação</a>
-            <a
-              href="https://www.gov.br/governodigital/pt-br/acessibilidade-digital"
-              >Acessibilidade</a
-            >
-          </nav>
-        </div>
-
-        <div class="button">
-          <div class="vl"></div>
-          <button type="submit">Entrar com gov.br</button>
-        </div>
-      </div>
-    </header>
-
-    <main>
-      <div class="home">
-        <hr class="hr1" />
-        <div class="home-c">
-          <div class="icon-home">
-            <img src="../assets/menu.png" alt="" />
-            <span>Ministério da Saúde</span>
-          </div>
-
-          <div class="pesquisar">
-            <input type="text" placeholder="O que você procura?" />
-          </div>
-        </div>
-        <hr class="hr2" />
+<body>
+  <header>
+    <div class="header">
+      <div class="img">
+        <img src="../assets/Gov.br_logo.svg.png" alt="gov" />
+        <div class="vl"></div>
       </div>
 
-      <div class="home-2">
-        <img src="../assets/silhueta-de-icone-de-casa 1.svg" alt="" />
-        <span>></span>
-        <a href="">Canais de Atendimento</a>
-        <span>></span>
-        <a href="index.html">Suporte a Saúde Mental</a>
-        <span>></span>
-        <a href="">Agende uma consulta</a>
+      <div class="nav">
+        <nav>
+          <a href="https://www.gov.br/pt-br/orgaos-do-governo">Orgãos do Governo</a>
+          <a href="https://www.gov.br/acessoainformacao/pt-br">Acesso a Informação</a>
+          <a href="http://www4.planalto.gov.br/legislacao">Legislação</a>
+          <a href="https://www.gov.br/governodigital/pt-br/acessibilidade-digital">Acessibilidade</a>
+        </nav>
       </div>
 
-      <section class="parte-azul">
-        <img src="../assets/farmacia 1.svg" alt="" />
+      <div class="button">
+        <div class="vl"></div>
+        <button type="submit">Entrar com gov.br</button>
+      </div>
+    </div>
+  </header>
 
-        <div class="texto-azul">
-          <h1>Agende uma consulta</h1>
-          <div></div>
-          <span class="texto-azul-span1"
-            >Agende sua consulta de forma rápida e fácil com profissionais
-            especializados em saúde mental.</span
-          >
+  <main>
+    <div class="home">
+      <hr class="hr1" />
+      <div class="home-c">
+        <div class="icon-home">
+          <img src="../assets/menu.png" alt="" />
+          <span>Ministério da Saúde</span>
         </div>
-      </section>
 
-      <section class="parte-form">
+        <div class="pesquisar">
+          <input type="text" placeholder="O que você procura?" />
+        </div>
+      </div>
+      <hr class="hr2" />
+    </div>
+
+    <div class="home-2">
+      <img src="../assets/silhueta-de-icone-de-casa 1.svg" alt="" />
+      <span>></span>
+      <a href="">Canais de Atendimento</a>
+      <span>></span>
+      <a href="index.html">Suporte a Saúde Mental</a>
+      <span>></span>
+      <a href="">Agende uma consulta</a>
+    </div>
+
+    <section class="parte-azul">
+      <img src="../assets/farmacia 1.svg" alt="" />
+
+      <div class="texto-azul">
+        <h1>Agende uma consulta</h1>
+        <div></div>
+        <span class="texto-azul-span1">Agende sua consulta de forma rápida e fácil com profissionais
+          especializados em saúde mental.</span>
+      </div>
+    </section>
+
+    <div class="container"> 
+        <section class="parte-form">
         <h1>Preencha as Informações abaixo</h1>
 
         <form action="">
@@ -86,122 +79,71 @@
             <h1>Selecionar a Unidade de Saúde desejada</h1>
 
             <div class="select-container">
-      <label for="estado">Estado:</label>
-      <select class="estado" id="estado" required aria-placeholder="Estado"></select>
+              <label for="estado">Estado:</label>
+              <select class="estado" id="estado" required aria-placeholder="Estado"></select>
 
-      <label for="cidade">Cidade:</label>
-      <select class="cidade" id="cidade" disabled></select>
- 
-      <label for="hospital">Hospital:</label>
-      <select class="hospital" id="hospital" disabled></select>
+              <label for="cidade">Cidade:</label>
+              <select class="cidade" id="cidade" disabled></select>
 
-      <label for="data">Data:</label>
-      <input class="calendario" type="date" id="data" required />
+              <label for="hospital">Hospital:</label>
+              <select class="hospital" id="hospital" disabled></select>
 
-              <!-- <img src="assets/Line1.svg" alt="line1" />
-              <img src="assets/Polygon 1.svg" alt="polygon" /> -->
+              <label for="data">Data:</label>
+              <input class="calendario" type="date" id="data" required />
+
               <button type="submit">Pesquisar</button>
-              </div>
             </div>
-
-            <hr />
           </div>
-          
 
-          <!-- <div class="form-2">
-            <h1>Especialistas disponíveis</h1>
+    </form>
+    </section>
+    <section class="parte-horario">
+      <h1>Escolher horario</h1>
+    </section>
 
-            <div class="card-especialista">
-              <img src="assets/foto-perfil.svg" alt="" />
-              <div class="text-especialista">
-                <span>Psicóloga Letícia Martins</span>
-                <span>SESP MARABÁ-PA</span>
-              </div>
-            </div>
+    </div>
+  </main>
 
-            <h2>Selecione um dia e horário disponível:</h2>
+  <hr class="test" />
 
-            <div class="horarios">
-              <div class="horarios-cabecalho">
-                <span>Data</span>
-                <span>Horários disponíveis</span>
-              </div>
-
-              <hr />
-
-              <div class="card-horarios">
-                <div class="horarios-data">
-                  <span>30/04</span>
-                </div>
-                <div class="horarios">
-                  <button type="submit">15:00</button>
-                  <button type="submit">16:00</button>
-                  <button type="submit">17:00</button>
-                  <button type="submit">18:00</button>
-                </div>
-              </div>
-
-              <hr />
-
-              <div class="card-horarios">
-                <div class="horarios-data">
-                  <span>02/05</span>
-                </div>
-                <div class="horarios">
-                  <button type="submit">12:00</button>
-                  <button type="submit">14:00</button>
-                  <button type="submit">15:00</button>
-                  <button type="submit">18:00</button>
-                  <button type="submit">20:00</button>
-                </div>
-              </div>
-
-              <hr />
-            </div>
-          </div> -->
-        </form>
-      </section>
-    </main>
-
-    <hr class="test" />
-
-    <footer>
-      <div class="govbr-logo"></div>
-      <div class="listas">
-        <div class="footer-lista-pc">
-          <span>SERVIÇOS</span>
-          <span>TEMAS EM DESTAQUE</span>
-          <span>NOTÍCIAS</span>
-          <span>GALERIA DE APLICATIVOS</span>
-          <span>NAVEGAÇÃO</span>
-          <span>CONSULTAR MINHAS SOLICITAÇÕES</span>
-          <span>ÓRGAOS DO GOVERNO</span>
-        </div>
-
-        <div class="footer-lista-mobile">
-          <span>SERVIÇOS</span>
-          <hr />
-          <span>TEMAS EM DESTAQUE</span>
-          <hr />
-          <span>NOTÍCIAS</span>
-          <hr />
-          <span>GALERIA DE APLICATIVOS</span>
-          <hr />
-          <span>NAVEGAÇÃO</span>
-          <hr />
-          <span>CONSULTAR MINHAS SOLICITAÇÕES</span>
-          <hr />
-          <span>ÓRGAOS DO GOVERNO</span>
-        </div>
-
-        <div class="footer-desenvolvedores">
-          <span class="footer-lista-span1">Desenvolvedores</span>
-          <span>Artur</span>
-          <span>Isaque</span>
-          <span>Fhelipe</span>
-          <span>Miguel</span>
-        </div>
+  <footer>
+    <div class="govbr-logo"></div>
+    <div class="listas">
+      <div class="footer-lista-pc">
+        <span>SERVIÇOS</span>
+        <span>TEMAS EM DESTAQUE</span>
+        <span>NOTÍCIAS</span>
+        <span>GALERIA DE APLICATIVOS</span>
+        <span>NAVEGAÇÃO</span>
+        <span>CONSULTAR MINHAS SOLICITAÇÕES</span>
+        <span>ÓRGAOS DO GOVERNO</span>
       </div>
-    </footer>
-  </body>
+
+      <div class="footer-lista-mobile">
+        <span>SERVIÇOS</span>
+        <hr />
+        <span>TEMAS EM DESTAQUE</span>
+        <hr />
+        <span>NOTÍCIAS</span>
+        <hr />
+        <span>GALERIA DE APLICATIVOS</span>
+        <hr />
+        <span>NAVEGAÇÃO</span>
+        <hr />
+        <span>CONSULTAR MINHAS SOLICITAÇÕES</span>
+        <hr />
+        <span>ÓRGAOS DO GOVERNO</span>
+      </div>
+
+      <div class="footer-desenvolvedores">
+        <span class="footer-lista-span1">Desenvolvedores</span>
+        <span>Artur</span>
+        <span>Isaque</span>
+        <span>Fhelipe</span>
+        <span>Miguel</span>
+      </div>
+    </div>
+  </footer>
+</body>
+
 </html>
