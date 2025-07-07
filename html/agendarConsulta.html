@@ -15,7 +15,6 @@
         <img src="../assets/Gov.br_logo.svg.png" alt="gov" />
         <div class="vl"></div>
       </div>
-
       <div class="nav">
         <nav>
           <a href="https://www.gov.br/pt-br/orgaos-do-governo">Orgãos do Governo</a>
@@ -24,10 +23,9 @@
           <a href="https://www.gov.br/governodigital/pt-br/acessibilidade-digital">Acessibilidade</a>
         </nav>
       </div>
-
       <div class="button">
         <div class="vl"></div>
-        <button type="submit">Entrar com gov.br</button>
+        <button type="button">Entrar com gov.br</button>
       </div>
     </div>
   </header>
@@ -40,7 +38,6 @@
           <img src="../assets/menu.png" alt="" />
           <span>Ministério da Saúde</span>
         </div>
-
         <div class="pesquisar">
           <input type="text" placeholder="O que você procura?" />
         </div>
@@ -51,16 +48,15 @@
     <div class="home-2">
       <img src="../assets/silhueta-de-icone-de-casa 1.svg" alt="" />
       <span>></span>
-      <a href="">Canais de Atendimento</a>
+      <a href="#">Canais de Atendimento</a>
       <span>></span>
       <a href="index.html">Suporte a Saúde Mental</a>
       <span>></span>
-      <a href="">Agende uma consulta</a>
+      <a href="#">Agende uma consulta</a>
     </div>
 
     <section class="parte-azul">
       <img src="../assets/farmacia 1.svg" alt="" />
-
       <div class="texto-azul">
         <h1>Agende uma consulta</h1>
         <div></div>
@@ -69,38 +65,66 @@
       </div>
     </section>
 
-    <div class="container"> 
-        <section class="parte-form">
-        <h1>Preencha as Informações abaixo</h1>
-
-        <form action="">
-
+    <div class="container">
+      <section class="parte-form">
+        <form id="form-pesquisa">
           <div class="form-1">
             <h1>Selecionar a Unidade de Saúde desejada</h1>
-
             <div class="select-container">
               <label for="estado">Estado:</label>
-              <select class="estado" id="estado" required aria-placeholder="Estado"></select>
-
+              <select class="estado" id="estado" required></select>
               <label for="cidade">Cidade:</label>
-              <select class="cidade" id="cidade" disabled></select>
-
+              <select class="cidade" id="cidade" disabled required></select>
               <label for="hospital">Hospital:</label>
-              <select class="hospital" id="hospital" disabled></select>
-
+              <select class="hospital" id="hospital" disabled required></select>
               <label for="data">Data:</label>
               <input class="calendario" type="date" id="data" required />
-
-              <button type="submit">Pesquisar</button>
+              <button type="submit">Pesquisar Horários</button>
             </div>
           </div>
+        </form>
+      </section>
 
-    </form>
-    </section>
-    <section class="parte-horario">
-      <h1>Escolher horario</h1>
-    </section>
+      <section class="parte-horario" id="secao-horarios">
+        <h1>Escolher horário</h1>
+        <div class="horarios-container" id="horarios-container">
+          <div class="periodo">
+            <h2 class="periodo-titulo">Manhã</h2>
+            <div class="horarios-grid">
+              <button type="button" class="btn-horario" data-horario="09:00">09:00</button>
+              <button type="button" class="btn-horario" data-horario="10:00">10:00</button>
+              <button type="button" class="btn-horario" data-horario="11:00">11:00</button>
+              <button type="button" class="btn-horario" data-horario="12:00">12:00</button>
+            </div>
+          </div>
+          <div class="periodo">
+            <h2 class="periodo-titulo">Tarde</h2>
+            <div class="horarios-grid">
+              <button type="button" class="btn-horario" data-horario="13:00">13:00</button>
+              <button type="button" class="btn-horario" data-horario="14:00">14:00</button>
+              <button type="button" class="btn-horario" data-horario="15:00">15:00</button>
+              <button type="button" class="btn-horario" data-horario="16:00">16:00</button>
+              <button type="button" class="btn-horario" data-horario="17:00">17:00</button>
+              <button type="button" class="btn-horario" data-horario="18:00">18:00</button>
+            </div>
+          </div>
+          <div class="periodo">
+            <h2 class="periodo-titulo">Noite</h2>
+            <div class="horarios-grid">
+              <button type="button" class="btn-horario" data-horario="19:00">19:00</button>
+              <button type="button" class="btn-horario" data-horario="20:00">20:00</button>
+              <button type="button" class="btn-horario" data-horario="21:00">21:00</button>
+            </div>
+          </div>
+        </div>
+        <button type="button" id="btn-confirmar">Confirmar Agendamento</button>
 
+        <div id="agendamentos-salvos-container">
+          <h3>Seus Agendamentos</h3>
+          <ul id="lista-agendamentos">
+          </ul>
+        </div>
+      </section>
     </div>
   </main>
 
@@ -118,7 +142,6 @@
         <span>CONSULTAR MINHAS SOLICITAÇÕES</span>
         <span>ÓRGAOS DO GOVERNO</span>
       </div>
-
       <div class="footer-lista-mobile">
         <span>SERVIÇOS</span>
         <hr />
@@ -134,7 +157,6 @@
         <hr />
         <span>ÓRGAOS DO GOVERNO</span>
       </div>
-
       <div class="footer-desenvolvedores">
         <span class="footer-lista-span1">Desenvolvedores</span>
         <span>Artur</span>
@@ -144,6 +166,8 @@
       </div>
     </div>
   </footer>
+
+  <script src="../js/scriptConsulta.js"></script>
 </body>
 
 </html>

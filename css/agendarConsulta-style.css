@@ -62,6 +62,40 @@ a {
     text-decoration: none;
 }
 
+.btn-horario.indisponivel {
+  background-color: #e9ecef; 
+  color: #6c757d;           
+  text-decoration: line-through; 
+  cursor: not-allowed;        
+}
+
+
+#lista-agendamentos li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px; 
+}
+
+.btn-excluir {
+  background-color: #dc3545; 
+  color: white;
+  border: none;
+  border-radius: 50%; 
+  width: 24px;
+  height: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 24px; 
+  text-align: center;
+  margin-left: 10px;
+}
+
+.btn-excluir:hover {
+  background-color: #c82333; 
+}
+
 .vl {
     border-left: 2px solid black;
     height: 55px;
@@ -114,7 +148,9 @@ a {
     border: 2px solid transparent;
     border-radius: 5px;
     background-color: rgb(236, 227, 227);
-    background-image: url(/assets/procurar.png);
+    /* --- CORREÇÃO IMPORTANTE ---
+       O caminho da imagem precisa ser relativo ao ficheiro CSS. */
+    background-image: url(../assets/procurar.png); 
     background-repeat: no-repeat;
     background-position: right 8px center;
 }
@@ -179,7 +215,7 @@ a {
     display: grid;
     grid-template-columns: 50% 50%;
     margin-bottom: 20px ;
-
+    padding: 0 20px; /* Adicionado um preenchimento para espaçamento */
 }
 
 .parte-form h1, .parte-horario h1 {
@@ -208,6 +244,8 @@ a {
     position: relative;
     gap: 12px;
     margin: 0 auto;
+    width: 100%; /* Garante que o container ocupe o espaço */
+    max-width: 450px; /* Define uma largura máxima */
 }
 
 .select-estilizado {
@@ -240,6 +278,7 @@ a {
     border: 2px solid transparent;
     border-radius: 10px;
     color: white;
+    cursor: pointer;
 }
 
 .form-1 hr {
@@ -254,101 +293,92 @@ a {
     margin-bottom: 20px;
 }
 
-.estado {
-    height: 30px;
-    width: 450px;
+.estado, .cidade, .hospital, .calendario {
+    height: 40px; /* Aumentado para melhor toque */
+    width: 100%; /* Ocupa a largura do container */
+    padding: 0 10px; /* Adiciona preenchimento interno */
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.cidade {
-    height: 30px;
-    width: 450px;
-}
-
-.hospital {
-    height: 30px;
-    width: 450px;
-}
-
-.calendario {
-    height: 30px;
-    width: 450px;
-}
 
 .select-container button {
-    width: 100px;
-    padding: 10px 20px;
-    background-color: black;
-    border: 2px solid transparent;
-    border-radius: 10px;
+    width: auto; /* Largura automática baseada no conteúdo */
+    align-self: flex-start; /* Alinha o botão à esquerda */
+    margin-top: 10px;
+}
+
+/* NOVOS ESTILOS PARA HORÁRIOS */
+.parte-horario {
+  display: none; /* Começa escondido */
+  padding-left: 40px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.horarios-container {
+  margin-top: 20px;
+}
+
+.periodo-titulo {
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.horarios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 10px;
+}
+
+.btn-horario {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-horario:hover {
+  background-color: #e0e0e0;
+}
+
+.btn-horario.selecionado {
+  background-color: #007bff;
+  color: white;
+  border-color: #0056b3;
+}
+
+#btn-confirmar {
+    display: none; /* Começa escondido */
+    width: 100%;
+    padding: 15px;
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #28a745;
     color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-/* 
-.card-especialista {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    margin-bottom: 20px;
+#btn-confirmar:hover {
+    background-color: #218838;
 }
 
-.card-especialista > img {
-    width: 80px;
-    height: auto;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.text-especialista {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.form-2 hr {
-    width: 100%;
-    margin: 5px 0;
-} */
-
-/* .card-horarios {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-left: 1rem;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-
-.horarios-cabecalho {
-    display: flex;
-    margin-left: 30px;
-    flex-direction: row;
-    align-items: center;
-    gap: 100px;
-} */
-
-/* .horarios button {
-    padding: 10px;
-    background-color: #D9D9D9;
-    border: 2px solid transparent;
-    border-radius: 10px;
-    color: #767676;
-}
-
-.test {
-    width: 100%;
-    margin-top: 20px;
-    background-color: black;
-    border: 1px solid transparent;
-} */
 
 footer {
     background-color: #071d41;
     display: flex;
     flex-direction: column;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-top: 30px;
-    padding-bottom: 200px;
+    padding: 30px 50px 200px 50px;
 }
 
 .footer-lista-mobile {
@@ -394,12 +424,6 @@ footer {
         display: none;
     }
 
-    .Cards-P {
-        display: flex;
-        flex-direction: column;
-
-    }
-
     .icon-home>span {
         font-size: 5vw;
     }
@@ -413,8 +437,18 @@ footer {
         margin-bottom: 2px;
     }
 
+    /* Modificação para empilhar em telas menores */
+    .container {
+        grid-template-columns: 1fr; /* Coluna única */
+        gap: 40px; /* Espaçamento entre as seções */
+    }
+
+    .parte-horario {
+        padding-left: 0; /* Remove o padding extra */
+    }
+
     .footer-lista-mobile,
-    .listas, .container {
+    .listas {
         display: flex;
         flex-direction: column;
         gap: 10px;
@@ -433,41 +467,7 @@ footer {
     }
 }
 
-@media (max-width: 620px) {
-    .estado {
-        height: 30px;
-        max-width: 450px;
-        width: 80vw;
-        min-width: 100px;
-    }
-
-    .cidade {
-        height: 30px;
-        max-width: 450px;
-        width: 80vw;
-        min-width: 100px;
-    }
-
-    .hospital {
-        height: 30px;
-        max-width: 450px;
-        width: 80vw;
-        min-width: 100px;
-    }
-
-    .calendario {
-        height: 30px;
-        max-width: 450px;
-        width: 80vw;
-        min-width: 100px;
-    }
-}
-
 hr {
     border: none;
     border-bottom: 1px solid #d6d6d6;
-}
-
-.Card h1 {
-    text-align: center;
 }
