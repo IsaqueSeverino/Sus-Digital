@@ -1,0 +1,158 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum TipoUsuario {
+  PACIENTE
+  MEDICO
+  ADMIN
+}
+
+enum StatusConsulta {
+  AGENDADA
+  CONFIRMADA
+  REALIZADA
+  CANCELADA
+}
+
+enum TipoExame {
+  LABORATORIAL
+  IMAGEM
+  CARDIOLOGICO
+  NEUROLOGICO
+}
+
+model Usuario {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  senha     String
+  tipo      TipoUsuario
+  ativo     Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Relacionamentos
+  medico    Medico?
+  paciente  Paciente?
+  
+  @@map("usuarios")
+}
+
+model Medico {
+  id           String   @id @default(cuid())
+  nome         String
+  crm          String   @unique
+  especialidade String
+  telefone     String?
+  usuarioId    String   @unique
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  
+  // Relacionamentos
+  usuario    Usuario     @relation(fields: [usuarioId], references: [id])
+  consultas  Consulta[]
+  
+  @@map("medicos")
+}
+
+model Paciente {
+  id            String   @id @default(cuid())
+  nome          String
+  cpf           String   @unique
+  dataNascimento DateTime
+  telefone      String?
+  endereco      String?
+  cartaoSus     String?  @unique
+  usuarioId     String   @unique
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  // Relacionamentos
+  usuario     Usuario      @relation(fields: [usuarioId], references: [id])
+  consultas   Consulta[]
+  prontuarios Prontuario[]
+  
+  @@map("pacientes")
+}
+
+model Consulta {
+  id          String        @id @default(cuid())
+  dataHora    DateTime
+  motivo      String
+  observacoes String?
+  status      StatusConsulta @default(AGENDADA)
+  medicoId    String
+  pacienteId  String
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  
+  // Relacionamentos
+  medico    Medico   @relation(fields: [medicoId], references: [id])
+  paciente  Paciente @relation(fields: [pacienteId], references: [id])
+  exames    Exame[]
+  
+  @@map("consultas")
+}
+
+model Prontuario {
+  id          String   @id @default(cuid())
+  data        DateTime @default(now())
+  diagnostico String
+  sintomas    String?
+  tratamento  String?
+  observacoes String?
+  pacienteId  String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relacionamentos
+  paciente   Paciente     @relation(fields: [pacienteId], references: [id])
+  medicacoes Medicacao[]
+  
+  @@map("prontuarios")
+}
+
+model Exame {
+  id          String    @id @default(cuid())
+  tipo        TipoExame
+  nome        String
+  resultado   String?
+  dataExame   DateTime
+  observacoes String?
+  consultaId  String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  
+  // Relacionamentos
+  consulta Consulta @relation(fields: [consultaId], references: [id])
+  
+  @@map("exames")
+}
+
+model Medicacao {
+  id           String   @id @default(cuid())
+  nome         String
+  dosagem      String
+  frequencia   String
+  duracao      String
+  instrucoes   String?
+  prontuarioId String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  
+  // Relacionamentos
+  prontuario Prontuario @relation(fields: [prontuarioId], references: [id])
+  
+  @@map("medicacoes")
+}
