@@ -90,18 +90,7 @@ Sus-Digital/
 - **Infra:** Pronto para deploy local ou em nuvem, versionado e seguro (.env não versionado)
 - **Documentação:** Endpoints explicados em `/api`, exemplos e scripts para dados de teste disponíveis
 
-## 📑 Licença
 
-MIT (ou adaptar conforme política da disciplina/faculdade)
-
----
-
-**Dicas finais:**
-- Nunca suba o `.env` real, compartilhe apenas `.env.example`!
-- Siga o passo-a-passo do Docker para rodar em qualquer máquina.
-- Documente endpoints e exemplos de uso conforme necessidade do projeto/acadêmico.
-
----
 
 
 
