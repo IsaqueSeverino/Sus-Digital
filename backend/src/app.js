@@ -37,8 +37,8 @@ app.use(logger);
 
 // Health check
 app.get('/health', (req, res) => {
-  res.status(200).json({ 
-    status: 'OK', 
+  res.status(200).json({
+    status: 'OK',
     service: 'SUS Digital API',
     version: '1.0.0',
     timestamp: new Date().toISOString(),
@@ -49,11 +49,11 @@ app.get('/health', (req, res) => {
 
 // Documentação básica da API
 app.get('/api', (req, res) => {
-  res.json({ 
+  res.json({
     message: '🏥 Bem-vindo à API SUS Digital!',
     version: '1.0.0',
     description: 'Sistema de Gestão de Saúde Digital',
-    author: 'Isaque Severino',
+    author: 'Isaque Severino, Fhelipe Estumano, José Miguel e Artur Silva',
     disciplina: 'Desenvolvimento de Sistemas Web II',
     endpoints: {
       auth: {
@@ -99,8 +99,8 @@ app.use('/api/exames', exameRoutes);
 app.use(errorHandler);
 
 // Rota não encontrada (deve ser a penúltima)
-app.use('*', (req, res) => {
-  res.status(404).json({ 
+app.use((req, res) => {
+  res.status(404).json({
     erro: 'Rota não encontrada',
     path: req.originalUrl,
     method: req.method,

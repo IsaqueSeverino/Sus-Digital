@@ -48,7 +48,6 @@ async function main() {
         crm: '12345-SP',
         especialidade: 'Clínico Geral',
         telefone: '(11) 99999-1111',
-        endereco: 'Rua das Clínicas, 100',
         usuarioId: medico1User.id
       }
     });
@@ -68,7 +67,6 @@ async function main() {
         crm: '67890-RJ',
         especialidade: 'Cardiologia',
         telefone: '(21) 88888-2222',
-        endereco: 'Av. Coração, 200',
         usuarioId: medico2User.id
       }
     });
