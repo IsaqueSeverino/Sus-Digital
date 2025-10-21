@@ -168,7 +168,6 @@ class ConsultaController {
       const { id } = req.params;
       const { dataHora, motivo, observacoes, status } = req.body;
 
-      // Verificar se consulta existe
       const consultaExistente = await prisma.consulta.findUnique({
         where: { id }
       });
@@ -177,12 +176,10 @@ class ConsultaController {
         return res.status(404).json({ erro: 'Consulta não encontrada' });
       }
 
-      // Verificar permissão
       if (req.user.tipo === 'MEDICO' && consultaExistente.medicoId !== req.user.medico?.id) {
         return res.status(403).json({ erro: 'Acesso negado' });
       }
 
-      // Preparar dados para atualização
       const updateData = {};
       if (dataHora) {
         const novaData = new Date(dataHora);
@@ -224,7 +221,6 @@ class ConsultaController {
     try {
       const { id } = req.params;
 
-      // Verificar se consulta existe
       const consulta = await prisma.consulta.findUnique({
         where: { id }
       });
@@ -233,7 +229,6 @@ class ConsultaController {
         return res.status(404).json({ erro: 'Consulta não encontrada' });
       }
 
-      // Só admin ou médico responsável pode deletar
       if (req.user.tipo !== 'ADMIN' && 
           (req.user.tipo !== 'MEDICO' || consulta.medicoId !== req.user.medico?.id)) {
         return res.status(403).json({ erro: 'Acesso negado' });
@@ -254,7 +249,6 @@ class ConsultaController {
     try {
       const { medicoId } = req.params;
 
-      // Verificar permissão
       if (req.user.tipo === 'MEDICO' && medicoId !== req.user.medico?.id) {
         return res.status(403).json({ erro: 'Acesso negado' });
       }
@@ -280,7 +274,6 @@ class ConsultaController {
     try {
       const { pacienteId } = req.params;
 
-      // Verificar permissão
       if (req.user.tipo === 'PACIENTE' && pacienteId !== req.user.paciente?.id) {
         return res.status(403).json({ erro: 'Acesso negado' });
       }

@@ -2,7 +2,6 @@ const { PrismaClient } = require('@prisma/client');
 const JWTUtils = require('../utils/jwt');
 
 const prisma = new PrismaClient();
-
 class AuthMiddleware {
   static async authenticate(req, res, next) {
     try {
@@ -35,7 +34,6 @@ class AuthMiddleware {
         return res.status(401).json({ erro: 'Token inválido ou usuário inativo' });
       }
 
-      // Adicionar dados do usuário na requisição
       req.user = usuario;
       req.userId = usuario.id;
       req.userType = usuario.tipo;
@@ -73,7 +71,6 @@ class AuthMiddleware {
     };
   }
 
-  // Middleware para verificar se é o próprio usuário ou admin
   static authorizeOwnerOrAdmin(req, res, next) {
     const targetUserId = req.params.id || req.params.userId;
     

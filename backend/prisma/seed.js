@@ -4,22 +4,21 @@ const bcrypt = require('bcryptjs');
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log('🌱 Iniciando seed do banco de dados...');
+  console.log('Iniciando seed do banco de dados...');
 
   try {
-    // Limpar dados existentes (opcional)
-    await prisma.consulta.deleteMany();
+
     await prisma.exame.deleteMany();
     await prisma.medicacao.deleteMany();
     await prisma.prontuario.deleteMany();
+    await prisma.consulta.deleteMany();
     await prisma.medico.deleteMany();
     await prisma.paciente.deleteMany();
     await prisma.usuario.deleteMany();
 
-    // Criar usuário admin
-    console.log('👤 Criando usuário administrador...');
+    console.log('Criando usuário administrador...');
     const adminPassword = await bcrypt.hash('admin123', 12);
-    
+
     const admin = await prisma.usuario.create({
       data: {
         email: 'admin@susdigital.com',
@@ -30,9 +29,8 @@ async function main() {
     });
     console.log('✅ Admin criado:', admin.email);
 
-    // Criar médicos
-    console.log('👨‍⚕️ Criando médicos...');
-    
+    console.log('Criando médicos...');
+
     const medico1User = await prisma.usuario.create({
       data: {
         email: 'dr.joao@susdigital.com',
@@ -73,9 +71,8 @@ async function main() {
 
     console.log('✅ Médicos criados:', medico1.nome, medico2.nome);
 
-    // Criar pacientes
-    console.log('👨‍👩‍👧‍👦 Criando pacientes...');
-    
+    console.log('Criando pacientes...');
+
     const paciente1User = await prisma.usuario.create({
       data: {
         email: 'ana.costa@email.com',
@@ -120,9 +117,8 @@ async function main() {
 
     console.log('✅ Pacientes criados:', paciente1.nome, paciente2.nome);
 
-    // Criar consultas de exemplo
-    console.log('📅 Criando consultas de exemplo...');
-    
+    console.log('Criando consultas de exemplo...');
+
     const consulta1 = await prisma.consulta.create({
       data: {
         dataHora: new Date('2024-12-20T10:00:00.000Z'),
@@ -147,9 +143,8 @@ async function main() {
 
     console.log('✅ Consultas criadas');
 
-    // Criar prontuários de exemplo
-    console.log('📋 Criando prontuários...');
-    
+    console.log('Criando prontuários...');
+
     const prontuario1 = await prisma.prontuario.create({
       data: {
         diagnostico: 'Hipertensão arterial leve',
@@ -160,7 +155,6 @@ async function main() {
       }
     });
 
-    // Criar medicação para o prontuário
     await prisma.medicacao.create({
       data: {
         nome: 'Losartana',
@@ -174,9 +168,8 @@ async function main() {
 
     console.log('✅ Prontuários e medicações criados');
 
-    // Criar exames de exemplo
-    console.log('🧪 Criando exames...');
-    
+    console.log('Criando exames...');
+
     await prisma.exame.create({
       data: {
         tipo: 'LABORATORIAL',
@@ -189,25 +182,25 @@ async function main() {
 
     console.log('✅ Exames criados');
 
-    console.log('🎉 ================================');
+    console.log('================================');
     console.log('✅ Seed executado com sucesso!');
-    console.log('🎉 ================================');
+    console.log('================================');
     console.log('');
-    console.log('👥 USUÁRIOS CRIADOS:');
-    console.log('   🔐 Admin: admin@susdigital.com / admin123');
-    console.log('   👨‍⚕️ Médico 1: dr.joao@susdigital.com / medico123');
-    console.log('   👨‍⚕️ Médico 2: dra.maria@susdigital.com / medico123');
-    console.log('   👤 Paciente 1: ana.costa@email.com / paciente123');
-    console.log('   👤 Paciente 2: carlos.lima@email.com / paciente123');
+    console.log('USUÁRIOS CRIADOS:');
+    console.log('Admin: admin@susdigital.com / admin123');
+    console.log('Médico 1: dr.joao@susdigital.com / medico123');
+    console.log('Médico 2: dra.maria@susdigital.com / medico123');
+    console.log('Paciente 1: ana.costa@email.com / paciente123');
+    console.log('Paciente 2: carlos.lima@email.com / paciente123');
     console.log('');
-    console.log('📊 DADOS CRIADOS:');
-    console.log('   👥 5 usuários');
-    console.log('   👨‍⚕️ 2 médicos');
-    console.log('   👨‍👩‍👧‍👦 2 pacientes');
-    console.log('   📅 2 consultas');
-    console.log('   📋 1 prontuário');
-    console.log('   💊 1 medicação');
-    console.log('   🧪 1 exame');
+    console.log('DADOS CRIADOS:');
+    console.log('5 usuários');
+    console.log('2 médicos');
+    console.log('2 pacientes');
+    console.log('2 consultas');
+    console.log('1 prontuário');
+    console.log('1 medicação');
+    console.log('1 exame');
 
   } catch (error) {
     console.error('❌ Erro durante o seed:', error);
@@ -222,5 +215,5 @@ main()
   })
   .finally(async () => {
     await prisma.$disconnect();
-    console.log('🔌 Desconectado do banco de dados');
+    console.log('Desconectado do banco de dados');
   });

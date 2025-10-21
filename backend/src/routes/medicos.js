@@ -2,10 +2,69 @@ const express = require('express');
 const router = express.Router();
 const AuthMiddleware = require('../middlewares/auth');
 
-// Middleware de autenticação
 router.use(AuthMiddleware.authenticate);
 
-// Listar médicos (todos podem ver)
+/**
+ * @swagger
+ * /api/medicos:
+ *   get:
+ *     summary: Listar todos os médicos
+ *     description: Retorna uma lista com todos os médicos cadastrados no sistema. Disponível para todos os usuários autenticados
+ *     tags: [Médicos]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: especialidade
+ *         schema:
+ *           type: string
+ *         description: Filtrar por especialidade médica
+ *         example: Cardiologia
+ *       - in: query
+ *         name: nome
+ *         schema:
+ *           type: string
+ *         description: Buscar por nome do médico (busca parcial)
+ *         example: Silva
+ *     responses:
+ *       200:
+ *         description: Lista de médicos retornada com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   id:
+ *                     type: string
+ *                     example: clxyz1234567890
+ *                   nome:
+ *                     type: string
+ *                     example: Dr. João Silva
+ *                   crm:
+ *                     type: string
+ *                     example: CRM/SP 123456
+ *                   especialidade:
+ *                     type: string
+ *                     example: Cardiologia
+ *                   telefone:
+ *                     type: string
+ *                     nullable: true
+ *                     example: (11) 98765-4321
+ *       401:
+ *         description: Token inválido ou ausente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       500:
+ *         description: Erro interno do servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ */
 router.get('/', async (req, res) => {
   try {
     const { PrismaClient } = require('@prisma/client');
@@ -29,7 +88,66 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Obter médico específico
+/**
+ * @swagger
+ * /api/medicos/{id}:
+ *   get:
+ *     summary: Obter médico específico
+ *     description: Retorna os dados completos de um médico específico pelo seu ID. Disponível para todos os usuários autenticados
+ *     tags: [Médicos]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID único do médico
+ *         example: clxyz1234567890
+ *     responses:
+ *       200:
+ *         description: Dados do médico retornados com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               allOf:
+ *                 - $ref: '#/components/schemas/Medico'
+ *                 - type: object
+ *                   properties:
+ *                     usuario:
+ *                       type: object
+ *                       properties:
+ *                         email:
+ *                           type: string
+ *                           format: email
+ *                           example: medico@exemplo.com
+ *                         ativo:
+ *                           type: boolean
+ *                           example: true
+ *       401:
+ *         description: Token inválido ou ausente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       404:
+ *         description: Médico não encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 erro:
+ *                   type: string
+ *                   example: Médico não encontrado
+ *       500:
+ *         description: Erro interno do servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ */
 router.get('/:id', async (req, res) => {
   try {
     const { PrismaClient } = require('@prisma/client');

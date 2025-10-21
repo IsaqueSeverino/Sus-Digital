@@ -1,7 +1,6 @@
 const logger = (req, res, next) => {
   const start = Date.now();
   
-  // Override do método end para capturar o tempo de resposta
   const originalEnd = res.end;
   res.end = function(...args) {
     const duration = Date.now() - start;

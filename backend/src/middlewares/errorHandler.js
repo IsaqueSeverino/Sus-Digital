@@ -7,7 +7,6 @@ const errorHandler = (err, req, res, next) => {
     timestamp: new Date().toISOString()
   });
 
-  // Erro de validação do Prisma
   if (err.code === 'P2002') {
     const field = err.meta?.target?.[0] || 'campo';
     return res.status(400).json({
@@ -18,7 +17,6 @@ const errorHandler = (err, req, res, next) => {
     });
   }
 
-  // Erro de registro não encontrado
   if (err.code === 'P2025') {
     return res.status(404).json({
       erro: 'Registro não encontrado',
@@ -27,7 +25,6 @@ const errorHandler = (err, req, res, next) => {
     });
   }
 
-  // Erro de relacionamento
   if (err.code === 'P2003') {
     return res.status(400).json({
       erro: 'Erro de relacionamento',
@@ -36,7 +33,6 @@ const errorHandler = (err, req, res, next) => {
     });
   }
 
-  // Erro de JWT
   if (err.name === 'JsonWebTokenError') {
     return res.status(401).json({
       erro: 'Token inválido',
@@ -44,7 +40,6 @@ const errorHandler = (err, req, res, next) => {
     });
   }
 
-  // Erro de JWT expirado
   if (err.name === 'TokenExpiredError') {
     return res.status(401).json({
       erro: 'Token expirado',
@@ -53,7 +48,6 @@ const errorHandler = (err, req, res, next) => {
     });
   }
 
-  // Erro de validação
   if (err.name === 'ValidationError') {
     return res.status(400).json({
       erro: 'Dados inválidos',
@@ -62,7 +56,6 @@ const errorHandler = (err, req, res, next) => {
     });
   }
 
-  // Erro padrão
   res.status(err.status || 500).json({
     erro: err.message || 'Erro interno do servidor',
     code: 'INTERNAL_ERROR',

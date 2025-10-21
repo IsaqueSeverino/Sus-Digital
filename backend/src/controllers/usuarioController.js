@@ -118,7 +118,6 @@ class UsuarioController {
     try {
       const { id } = req.params;
 
-      // Não permitir deletar próprio usuário
       if (id === req.user.id) {
         return res.status(400).json({ erro: 'Você não pode deletar sua própria conta' });
       }

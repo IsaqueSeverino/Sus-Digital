@@ -16,13 +16,14 @@ process.on('unhandledRejection', (err) => {
 
 // Iniciar servidor
 const server = app.listen(PORT, () => {
-  console.log('🚀 ================================');
-  console.log(`🏥 SUS Digital API iniciada!`);
-  console.log(`📡 Servidor rodando na porta ${PORT}`);
-  console.log(`🌐 Health check: http://localhost:${PORT}/health`);
-  console.log(`📋 API base: http://localhost:${PORT}/api`);
-  console.log(`🗃️  Prisma Studio: npx prisma studio`);
-  console.log('🚀 ================================');
+  console.log('================================');
+  console.log(`SUS Digital API iniciada!`);
+  console.log(`Servidor rodando na porta ${PORT}`);
+  console.log(`Health check: http://localhost:${PORT}/health`);
+  console.log(`API base: http://localhost:${PORT}/api`);
+  console.log(`Interface Swagger UI: http://localhost:${PORT}/api-docs`);
+  console.log(`Prisma Studio: npx prisma studio`);
+  console.log('================================');
 });
 
 // Graceful shutdown

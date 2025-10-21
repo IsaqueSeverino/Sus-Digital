@@ -9,7 +9,6 @@ class AuthController {
     try {
       const { email, senha, tipo, nome, cpf, crm, especialidade, telefone, endereco, dataNascimento, cartaoSus } = req.body;
 
-      // Validações básicas
       if (!email || !senha || !tipo || !nome) {
         return res.status(400).json({
           erro: 'Dados obrigatórios não fornecidos',
@@ -24,7 +23,6 @@ class AuthController {
         });
       }
 
-      // Verificar se usuário já existe
       const existingUser = await prisma.usuario.findUnique({
         where: { email }
       });
@@ -33,12 +31,10 @@ class AuthController {
         return res.status(400).json({ erro: 'Email já está em uso' });
       }
 
-      // Hash da senha
       const hashedPassword = await BcryptUtils.hashPassword(senha);
 
-      // Criar usuário em transação
       const result = await prisma.$transaction(async (tx) => {
-        // Criar usuário
+
         const usuario = await tx.usuario.create({
           data: {
             email,
@@ -47,7 +43,6 @@ class AuthController {
           }
         });
 
-        // Criar perfil baseado no tipo
         let perfil = null;
 
         if (tipo === 'PACIENTE') {
@@ -116,7 +111,6 @@ class AuthController {
         });
       }
 
-      // Buscar usuário com perfil
       const usuario = await prisma.usuario.findUnique({
         where: { email },
         include: {
@@ -133,21 +127,18 @@ class AuthController {
         return res.status(401).json({ erro: 'Usuário desativado' });
       }
 
-      // Verificar senha
       const senhaValida = await BcryptUtils.comparePassword(senha, usuario.senha);
 
       if (!senhaValida) {
         return res.status(401).json({ erro: 'Credenciais inválidas' });
       }
 
-      // Gerar JWT
       const token = JWTUtils.generateToken({
         userId: usuario.id,
         email: usuario.email,
         tipo: usuario.tipo
       });
 
-      // Dados do perfil
       const perfil = usuario.medico || usuario.paciente || null;
 
       res.json({
@@ -201,17 +192,14 @@ class AuthController {
         });
       }
 
-      // Verificar senha atual
       const senhaValida = await BcryptUtils.comparePassword(senhaAtual, req.user.senha);
 
       if (!senhaValida) {
         return res.status(400).json({ erro: 'Senha atual incorreta' });
       }
 
-      // Hash da nova senha
       const novaSenhaHash = await BcryptUtils.hashPassword(novaSenha);
 
-      // Atualizar senha
       await prisma.usuario.update({
         where: { id: req.user.id },
         data: { senha: novaSenhaHash }
