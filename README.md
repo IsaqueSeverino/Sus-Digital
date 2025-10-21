@@ -7,7 +7,7 @@ Sistema Web completo para gestão digital de saúde, seguindo padrões modernos 
 ## 🏗️ Estrutura do Projeto
 
 - **Frontend:** HTML, CSS, JavaScript (interface responsiva, área de login, registro, consultas)
-- **Backend:** Node.js + Express, Prisma ORM, autenticação JWT, PostgreSQL
+- **Backend:** Node.js + Express, Prisma ORM, autenticação JWT, PostgreSQL e Swagger
 - **Infra/Docker:** Dockerfile para backend, docker-compose para ambiente integrado
 - **Banco:** Modelagem relacional/prisma, persistência de dados médicos/pacientes
 
@@ -34,7 +34,7 @@ cd Sus-Digital
 #### Exemplo `.env` para Docker local:
 
 ```
-DATABASE_URL="postgresql://postgres:postgres@db:5432/sus_digital?schema=public"
+DATABASE_URL="postgresql://postgres.lpfoivzqxzowtaifrtdx:[YOUR-PASSWORD]@aws-1-us-east-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
 JWT_SECRET="SUA_CHAVE_SEGURA_AQUI"
 PORT=3000
 ````
@@ -57,6 +57,7 @@ docker-compose exec backend npx prisma migrate dev
 - Backend API: `http://localhost:3000/api`
 - Health Check: `http://localhost:3000/health`
 - Prisma Studio: `docker-compose exec backend npx prisma studio` → `http://localhost:5555`
+- Swagger UI: `http://localhost:3000/api-docs`
 ```
 
 ## 🗄️ Estrutura de Pastas (Resumo)
@@ -84,7 +85,7 @@ Sus-Digital/
 
 ## 📚 Detalhes técnicos
 
-- **Backend:** Express, Prisma, JWT Auth, Docker-ready
+- **Backend:** Express, Prisma, JWT Auth, Docker-ready e Swagger
 - **Frontend:** HTML/CSS/JS puro para interface médica/paciente
 - **Banco:** PostgreSQL modelado para dados de saúde
 - **Infra:** Pronto para deploy local ou em nuvem, versionado e seguro (.env não versionado)
