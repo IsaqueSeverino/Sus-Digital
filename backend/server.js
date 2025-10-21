@@ -3,7 +3,6 @@ const app = require('./src/app');
 
 const PORT = process.env.PORT || 3000;
 
-// Tratamento de erros não capturados
 process.on('uncaughtException', (err) => {
   console.error('❌ Uncaught Exception:', err.message);
   process.exit(1);
@@ -14,7 +13,6 @@ process.on('unhandledRejection', (err) => {
   process.exit(1);
 });
 
-// Iniciar servidor
 const server = app.listen(PORT, () => {
   console.log('================================');
   console.log(`SUS Digital API iniciada!`);
@@ -26,9 +24,8 @@ const server = app.listen(PORT, () => {
   console.log('================================');
 });
 
-// Graceful shutdown
 process.on('SIGTERM', () => {
-  console.log('🔴 SIGTERM recebido. Fechando servidor...');
+  console.log('SIGTERM recebido. Fechando servidor...');
   server.close(() => {
     console.log('✅ Servidor fechado.');
   });
