@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, Prisma } from '@prisma/client';
 import BcryptUtils from '../utils/bcrypt';
 import JWTUtils from '../utils/jwt';
 
@@ -63,8 +63,8 @@ class AuthController {
         return;
       }
       const hashedPassword = await BcryptUtils.hashPassword(senha);
-     
-      const result = await prisma.$transaction(async (tx: PrismaClient) => {
+
+      const result = await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
         const usuario = await tx.usuario.create({
           data: {
             email,
@@ -94,7 +94,6 @@ class AuthController {
               crm,
               especialidade,
               telefone,
-              endereco,
               usuarioId: usuario.id
             }
           });

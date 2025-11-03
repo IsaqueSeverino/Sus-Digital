@@ -1,16 +1,16 @@
 import { Request, Response, NextFunction } from 'express';
 
 const logger = (req: Request, res: Response, next: NextFunction): void => {
-  const start = Date.now();
-  const originalEnd = res.end;
+  const inicio = Date.now(); 
 
-  res.end = function (...args: any[]) {
-    const duration = Date.now() - start;
-    console.log(`${req.method} ${req.path} - ${res.statusCode} - ${duration}ms - ${new Date().toISOString()}`);
-    originalEnd.apply(this, args);
-  };
+  res.on('finish', () => {
+    const duracao = Date.now() - inicio; 
+    const log = `${req.method} ${req.originalUrl} - ${res.statusCode} - ${duracao}ms - ${new Date().toISOString()}`;
+    console.log(log);
+  });
 
-  next();
+  next(); 
 };
 
 export default logger;
+
