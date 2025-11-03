@@ -1,32 +1,36 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express, { Request, Response } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import swaggerUi from 'swagger-ui-express';
-import swaggerSpec from './config/swagger';
+import swaggerSpec from './config/swagger.js';
 
-import authRoutes from './routes/auth';
-import usuarioRoutes from './routes/usuarios';
-import medicoRoutes from './routes/medicos';
-import pacienteRoutes from './routes/pacientes';
-import consultaRoutes from './routes/consultas';
-import prontuarioRoutes from './routes/prontuarios';
-import exameRoutes from './routes/exames';
+import authRoutes from './routes/auth.js';
+import usuarioRoutes from './routes/usuarios.js';
+import medicoRoutes from './routes/medicos.js';
+import pacienteRoutes from './routes/pacientes.js';
+import consultaRoutes from './routes/consultas.js';
+import prontuarioRoutes from './routes/prontuarios.js';
+import exameRoutes from './routes/exames.js';
 
-import errorHandler from './middlewares/errorHandler';
-import logger from './middlewares/logger';
+import errorHandler from './middlewares/errorHandler.js';
+import logger from './middlewares/logger.js';
 
 const app = express();
 
-app.use(helmet({
-  contentSecurityPolicy: false,
-  crossOriginEmbedderPolicy: false,
-}));
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+    crossOriginEmbedderPolicy: false,
+  })
+);
 
-app.use(cors({
-  origin: process.env.CORS_ORIGIN || '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-}));
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN || '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+);
 
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));

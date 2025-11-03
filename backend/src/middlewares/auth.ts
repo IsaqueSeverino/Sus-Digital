@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { PrismaClient } from '@prisma/client';
-import JWTUtils from '../utils/jwt';
+import JWTUtils from '../utils/jwt.js';
 
 const prisma = new PrismaClient();
 

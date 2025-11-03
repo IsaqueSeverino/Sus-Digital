@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { PrismaClient, Prisma } from '@prisma/client';
-import BcryptUtils from '../utils/bcrypt';
-import JWTUtils from '../utils/jwt';
+import BcryptUtils from '../utils/bcrypt.js';
+import JWTUtils from '../utils/jwt.js';
 
 const prisma = new PrismaClient();
 

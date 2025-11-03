@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
-import UsuarioController from '../controllers/usuarioController';
-import AuthMiddleware from '../middlewares/auth';
+import UsuarioController from '../controllers/usuarioController.js';
+import AuthMiddleware from '../middlewares/auth.js';
 
 router.use(AuthMiddleware.authenticate);
 

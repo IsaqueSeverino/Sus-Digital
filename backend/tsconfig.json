@@ -1,16 +1,10 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
     "module": "ESNext",
     "moduleResolution": "node",
-    "outDir": "dist",
-    "rootDir": "src",
     "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
-  },
-  "include": ["src"],
-  "exclude": ["node_modules"]
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2019",
+    "strict": true
+  }
 }
