@@ -42,25 +42,47 @@ SUS Digital é uma plataforma web completa para gerenciamento de processos de sa
 ## 🗄️ Estrutura de Pastas (Resumo)
 
 ```
-Sus-Digital/
+SUS-DIGITAL/
+├── assets/
 ├── backend/
-│   ├── src/
-│   │   ├── controllers/
-│   │   ├── services/
-│   │   ├── repositories/
-│   │   ├── middlewares/
-│   │   ├── routes/
-│   │   └── index.js
+│   ├── node_modules/
 │   ├── prisma/
-│   │   ├── schema.prisma
-│   │   └── migrations/
-│   ├── Dockerfile
+│   │   └── schema.prisma
+│   ├── src/
+│   │   ├── config/
+│   │   │   └── swagger.ts
+│   │   ├── controllers/
+│   │   │   ├── authController.ts
+│   │   │   ├── consultaController.ts
+│   │   │   └── usuarioController.ts
+│   │   ├── middlewares/
+│   │   │   ├── auth.ts
+│   │   │   ├── errorHandler.ts
+│   │   │   └── logger.ts
+│   │   ├── routes/
+│   │   │   ├── auth.ts
+│   │   │   ├── consultas.ts
+│   │   │   ├── exames.ts
+│   │   │   ├── medicos.ts
+│   │   │   ├── pacientes.ts
+│   │   │   ├── prontuarios.ts
+│   │   │   └── usuarios.ts
+│   │   ├── utils/
+│   │   │   ├── bcrypt.ts
+│   │   │   ├── jwt.ts
+│   │   │   └── seed.ts
+│   │   ├── app.ts
+│   │   └── server.ts
+│   ├── .env.example
+│   ├── .gitignore
 │   ├── docker-compose.yml
-│   └── package.json
-├── html/
+│   ├── Dockerfile
+│   ├── package-lock.json
+│   ├── package.json
+│   └── tsconfig.json
+├── conteudos/
 ├── css/
-├── js/
-└── assets/
+└── html/
 ```
 
 ## 🚀 Como rodar localmente
