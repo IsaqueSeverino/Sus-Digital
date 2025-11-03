@@ -10,9 +10,7 @@ COPY . .
 
 RUN npx prisma generate
 
-RUN npm run build  
-
 EXPOSE 3000
 
-CMD ["npx", "ts-node", "--esm", "src/server.ts"]
-
+ENV NODE_OPTIONS="--loader ts-node/esm"
+CMD ["npx", "ts-node", "--project", "tsconfig.json", "--esm", "src/server.ts"]

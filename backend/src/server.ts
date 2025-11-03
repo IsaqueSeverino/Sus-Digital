@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import app from './app';
+import app from './app'; 
 
 const PORT = process.env.PORT ? Number(process.env.PORT) : 3000;
 
@@ -8,8 +8,12 @@ process.on('uncaughtException', (err: Error) => {
   process.exit(1);
 });
 
-process.on('unhandledRejection', (err: any) => {
-  console.error('❌ Unhandled Rejection:', (err as Error)?.message);
+process.on('unhandledRejection', (err: unknown) => {
+  if (err instanceof Error) {
+    console.error('❌ Unhandled Rejection:', err.message);
+  } else {
+    console.error('❌ Unhandled Rejection:', err);
+  }
   process.exit(1);
 });
 

@@ -135,9 +135,7 @@ app.use('/api/exames', exameRoutes);
 
 app.use(errorHandler);
 
-type NotFoundRequest = Request & { originalUrl: string };
-
-app.use((req: NotFoundRequest, res: Response) => {
+app.use((req: Request, res: Response) => {
   res.status(404).json({
     erro: 'Rota não encontrada',
     path: req.originalUrl,
