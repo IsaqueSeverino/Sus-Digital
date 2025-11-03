@@ -99,9 +99,15 @@ cd Sus-Digital
 #### Configure seu .env em /backend/.env:
 
 ```
-DATABASE_URL="postgresql://<user>:<password>@<host>:<port>/<dbname>?schema=public"
-JWT_SECRET="SUA_CHAVE_SECRETA_SEGURA"
+DATABASE_URL="postgresql://[user]%2Elpfoivzqxzowtaifrtdx:[senha]@aws-1-us-east-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
+
+# JWT
+JWT_SECRET=""
+JWT_EXPIRES_IN="24h"
+
+# Server
 PORT=3000
+NODE_ENV="development"
 ````
 
 ### 3. Suba os containers com Docker Compose
