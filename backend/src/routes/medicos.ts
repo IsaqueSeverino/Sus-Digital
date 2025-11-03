@@ -1,6 +1,6 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const AuthMiddleware = require('../middlewares/auth');
+import AuthMiddleware from '../middlewares/auth';
 
 router.use(AuthMiddleware.authenticate);
 
@@ -174,4 +174,4 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

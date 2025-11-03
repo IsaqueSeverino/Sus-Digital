@@ -1,40 +1,70 @@
-const { PrismaClient } = require('@prisma/client');
-const  BcryptUtils  = require('../utils/bcrypt');
-const JWTUtils = require('../utils/jwt');
+import { Request, Response, NextFunction } from 'express';
+import { PrismaClient } from '@prisma/client';
+import BcryptUtils from '../utils/bcrypt';
+import JWTUtils from '../utils/jwt';
 
 const prisma = new PrismaClient();
 
+interface UsuarioModel {
+  id: string;
+  email: string;
+  senha: string;
+  tipo: 'PACIENTE' | 'MEDICO' | 'ADMIN';
+  ativo: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+  medico?: MedicoModel;
+  paciente?: PacienteModel;
+}
+interface MedicoModel {
+  id: string;
+  nome: string;
+  crm: string;
+  especialidade: string;
+  telefone?: string;
+  usuarioId: string;
+}
+interface PacienteModel {
+  id: string;
+  nome: string;
+  cpf: string;
+  dataNascimento: Date;
+  telefone?: string;
+  endereco?: string;
+  cartaoSus?: string;
+  usuarioId: string;
+}
+
+interface AuthenticatedRequest extends Request {
+  user?: UsuarioModel;
+}
+
 class AuthController {
-  static async register(req, res) {
+  static async register(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       const { email, senha, tipo, nome, cpf, crm, especialidade, telefone, endereco, dataNascimento, cartaoSus } = req.body;
-
       if (!email || !senha || !tipo || !nome) {
-        return res.status(400).json({
+        res.status(400).json({
           erro: 'Dados obrigatórios não fornecidos',
           required: ['email', 'senha', 'tipo', 'nome']
         });
+        return;
       }
-
       if (!['PACIENTE', 'MEDICO', 'ADMIN'].includes(tipo)) {
-        return res.status(400).json({
+        res.status(400).json({
           erro: 'Tipo de usuário inválido',
           allowed: ['PACIENTE', 'MEDICO', 'ADMIN']
         });
+        return;
       }
-
-      const existingUser = await prisma.usuario.findUnique({
-        where: { email }
-      });
-
+      const existingUser = await prisma.usuario.findUnique({ where: { email } });
       if (existingUser) {
-        return res.status(400).json({ erro: 'Email já está em uso' });
+        res.status(400).json({ erro: 'Email já está em uso' });
+        return;
       }
-
       const hashedPassword = await BcryptUtils.hashPassword(senha);
-
-      const result = await prisma.$transaction(async (tx) => {
-
+     
+      const result = await prisma.$transaction(async (tx: PrismaClient) => {
         const usuario = await tx.usuario.create({
           data: {
             email,
@@ -42,14 +72,9 @@ class AuthController {
             tipo
           }
         });
-
         let perfil = null;
-
         if (tipo === 'PACIENTE') {
-          if (!cpf) {
-            throw new Error('CPF é obrigatório para pacientes');
-          }
-
+          if (!cpf) throw new Error('CPF é obrigatório para pacientes');
           perfil = await tx.paciente.create({
             data: {
               nome,
@@ -62,10 +87,7 @@ class AuthController {
             }
           });
         } else if (tipo === 'MEDICO') {
-          if (!crm || !especialidade) {
-            throw new Error('CRM e especialidade são obrigatórios para médicos');
-          }
-
+          if (!crm || !especialidade) throw new Error('CRM e especialidade são obrigatórios para médicos');
           perfil = await tx.medico.create({
             data: {
               nome,
@@ -77,10 +99,8 @@ class AuthController {
             }
           });
         }
-
         return { usuario, perfil };
       });
-
       res.status(201).json({
         message: 'Usuário criado com sucesso',
         usuario: {
@@ -90,57 +110,46 @@ class AuthController {
         },
         perfil: result.perfil
       });
-    } catch (error) {
+    } catch (error: any) {
       console.error('Erro no register:', error);
-
-      if (error.message.includes('obrigatório')) {
-        return res.status(400).json({ erro: error.message });
+      if (error.message && error.message.includes('obrigatório')) {
+        res.status(400).json({ erro: error.message });
+        return;
       }
-
       res.status(500).json({ erro: 'Erro interno do servidor', details: error.message });
     }
   }
 
-  static async login(req, res) {
+  static async login(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       const { email, senha } = req.body;
-
       if (!email || !senha) {
-        return res.status(400).json({
-          erro: 'Email e senha são obrigatórios'
-        });
+        res.status(400).json({ erro: 'Email e senha são obrigatórios' });
+        return;
       }
-
       const usuario = await prisma.usuario.findUnique({
         where: { email },
-        include: {
-          medico: true,
-          paciente: true
-        }
+        include: { medico: true, paciente: true }
       });
-
       if (!usuario) {
-        return res.status(401).json({ erro: 'Credenciais inválidas' });
+        res.status(401).json({ erro: 'Credenciais inválidas' });
+        return;
       }
-
       if (!usuario.ativo) {
-        return res.status(401).json({ erro: 'Usuário desativado' });
+        res.status(401).json({ erro: 'Usuário desativado' });
+        return;
       }
-
       const senhaValida = await BcryptUtils.comparePassword(senha, usuario.senha);
-
       if (!senhaValida) {
-        return res.status(401).json({ erro: 'Credenciais inválidas' });
+        res.status(401).json({ erro: 'Credenciais inválidas' });
+        return;
       }
-
       const token = JWTUtils.generateToken({
         userId: usuario.id,
         email: usuario.email,
         tipo: usuario.tipo
       });
-
       const perfil = usuario.medico || usuario.paciente || null;
-
       res.json({
         message: 'Login realizado com sucesso',
         token,
@@ -158,8 +167,12 @@ class AuthController {
     }
   }
 
-  static async me(req, res) {
+  static async me(req: AuthenticatedRequest, res: Response, next: NextFunction): Promise<void> {
     try {
+      if (!req.user) {
+        res.status(401).json({ erro: 'Usuário não autenticado' });
+        return;
+      }
       res.json({
         usuario: {
           id: req.user.id,
@@ -176,35 +189,31 @@ class AuthController {
     }
   }
 
-  static async changePassword(req, res) {
+  static async changePassword(req: AuthenticatedRequest, res: Response, next: NextFunction): Promise<void> {
     try {
       const { senhaAtual, novaSenha } = req.body;
-
       if (!senhaAtual || !novaSenha) {
-        return res.status(400).json({
-          erro: 'Senha atual e nova senha são obrigatórias'
-        });
+        res.status(400).json({ erro: 'Senha atual e nova senha são obrigatórias' });
+        return;
       }
-
       if (novaSenha.length < 6) {
-        return res.status(400).json({
-          erro: 'Nova senha deve ter pelo menos 6 caracteres'
-        });
+        res.status(400).json({ erro: 'Nova senha deve ter pelo menos 6 caracteres' });
+        return;
       }
-
+      if (!req.user) {
+        res.status(401).json({ erro: 'Usuário não autenticado' });
+        return;
+      }
       const senhaValida = await BcryptUtils.comparePassword(senhaAtual, req.user.senha);
-
       if (!senhaValida) {
-        return res.status(400).json({ erro: 'Senha atual incorreta' });
+        res.status(400).json({ erro: 'Senha atual incorreta' });
+        return;
       }
-
       const novaSenhaHash = await BcryptUtils.hashPassword(novaSenha);
-
       await prisma.usuario.update({
         where: { id: req.user.id },
         data: { senha: novaSenhaHash }
       });
-
       res.json({ message: 'Senha alterada com sucesso' });
     } catch (error) {
       console.error('Erro ao alterar senha:', error);
@@ -213,4 +222,4 @@ class AuthController {
   }
 }
 
-module.exports = AuthController;
+export default AuthController;

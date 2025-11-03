@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 const consultaController = require('../controllers/consultaController');
 const { authenticate, authorize } = require('../middlewares/auth');
@@ -382,4 +382,4 @@ router.delete('/:id',
   consultaController.deletarConsulta
 );
 
-module.exports = router;
+export default router;

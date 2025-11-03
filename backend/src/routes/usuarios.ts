@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const UsuarioController = require('../controllers/usuarioController');
-const AuthMiddleware = require('../middlewares/auth');
+import UsuarioController from '../controllers/usuarioController';
+import AuthMiddleware from '../middlewares/auth';
 
 router.use(AuthMiddleware.authenticate);
 
@@ -286,4 +286,4 @@ router.delete('/:id',
   UsuarioController.deletarUsuario
 );
 
-module.exports = router;
+export default router;

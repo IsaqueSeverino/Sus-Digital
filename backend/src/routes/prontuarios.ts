@@ -1,32 +1,26 @@
-const express = require('express');
+
+import express from 'express';
 const router = express.Router();
-const AuthMiddleware = require('../middlewares/auth');
+import AuthMiddleware from '../middlewares/auth';
 
 router.use(AuthMiddleware.authenticate);
 
 /**
  * @swagger
- * /api/exames:
+ * /api/prontuarios:
  *   get:
- *     summary: Listar exames
- *     description: Retorna uma lista de exames médicos. Em desenvolvimento - funcionalidade básica disponível
- *     tags: [Exames]
+ *     summary: Listar prontuários
+ *     description: Retorna uma lista de prontuários médicos. Em desenvolvimento - funcionalidade básica disponível
+ *     tags: [Prontuários]
  *     security:
  *       - bearerAuth: []
  *     parameters:
  *       - in: query
- *         name: consultaId
+ *         name: pacienteId
  *         schema:
  *           type: string
- *         description: Filtrar por ID da consulta
+ *         description: Filtrar por ID do paciente
  *         example: clxyz1234567890
- *       - in: query
- *         name: tipo
- *         schema:
- *           type: string
- *           enum: [LABORATORIAL, IMAGEM, CARDIOLOGICO, NEUROLOGICO]
- *         description: Filtrar por tipo de exame
- *         example: LABORATORIAL
  *     responses:
  *       200:
  *         description: Rota em desenvolvimento
@@ -37,7 +31,7 @@ router.use(AuthMiddleware.authenticate);
  *               properties:
  *                 message:
  *                   type: string
- *                   example: Rotas de exames - em desenvolvimento
+ *                   example: Rotas de prontuários - em desenvolvimento
  *                 availableRoutes:
  *                   type: array
  *                   items:
@@ -52,18 +46,18 @@ router.use(AuthMiddleware.authenticate);
  */
 router.get('/', (req, res) => {
   res.json({ 
-    message: 'Rotas de exames - em desenvolvimento',
+    message: 'Rotas de prontuários - em desenvolvimento',
     availableRoutes: ['GET /', 'POST /', 'GET /:id', 'PUT /:id', 'DELETE /:id']
   });
 });
 
 /**
  * @swagger
- * /api/exames/{id}:
+ * /api/prontuarios/{id}:
  *   get:
- *     summary: Obter exame específico
- *     description: Retorna os dados de um exame específico. Em desenvolvimento
- *     tags: [Exames]
+ *     summary: Obter prontuário específico
+ *     description: Retorna os dados de um prontuário específico. Em desenvolvimento
+ *     tags: [Prontuários]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -72,17 +66,17 @@ router.get('/', (req, res) => {
  *         required: true
  *         schema:
  *           type: string
- *         description: ID único do exame
+ *         description: ID único do prontuário
  *         example: clxyz1234567890
  *     responses:
  *       200:
- *         description: Dados do exame (em desenvolvimento)
+ *         description: Dados do prontuário (em desenvolvimento)
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Exame'
+ *               $ref: '#/components/schemas/Prontuario'
  *       404:
- *         description: Exame não encontrado
+ *         description: Prontuário não encontrado
  *         content:
  *           application/json:
  *             schema:
@@ -97,11 +91,11 @@ router.get('/:id', (req, res) => {
 
 /**
  * @swagger
- * /api/exames:
+ * /api/prontuarios:
  *   post:
- *     summary: Criar novo exame
- *     description: Registra um novo exame médico. Em desenvolvimento - requer perfil MEDICO ou ADMIN
- *     tags: [Exames]
+ *     summary: Criar novo prontuário
+ *     description: Cria um novo prontuário médico. Em desenvolvimento - requer perfil MEDICO ou ADMIN
+ *     tags: [Prontuários]
  *     security:
  *       - bearerAuth: []
  *     requestBody:
@@ -111,34 +105,27 @@ router.get('/:id', (req, res) => {
  *           schema:
  *             type: object
  *             required:
- *               - consultaId
- *               - tipo
- *               - nome
- *               - dataExame
+ *               - pacienteId
+ *               - diagnostico
  *             properties:
- *               consultaId:
+ *               pacienteId:
  *                 type: string
  *                 example: clxyz1234567890
- *               tipo:
+ *               diagnostico:
  *                 type: string
- *                 enum: [LABORATORIAL, IMAGEM, CARDIOLOGICO, NEUROLOGICO]
- *                 example: LABORATORIAL
- *               nome:
+ *                 example: Hipertensão arterial sistêmica
+ *               sintomas:
  *                 type: string
- *                 example: Hemograma Completo
- *               dataExame:
+ *                 example: Dores de cabeça, tontura
+ *               tratamento:
  *                 type: string
- *                 format: date-time
- *                 example: 2025-10-20T09:00:00.000Z
- *               resultado:
- *                 type: string
- *                 example: Valores dentro da normalidade
+ *                 example: Medicação anti-hipertensiva
  *               observacoes:
  *                 type: string
- *                 example: Exame realizado em jejum
+ *                 example: Paciente apresenta melhora
  *     responses:
  *       201:
- *         description: Exame criado (em desenvolvimento)
+ *         description: Prontuário criado (em desenvolvimento)
  *       501:
  *         description: Endpoint em desenvolvimento
  */
@@ -150,11 +137,11 @@ router.post('/', (req, res) => {
 
 /**
  * @swagger
- * /api/exames/{id}:
+ * /api/prontuarios/{id}:
  *   put:
- *     summary: Atualizar exame
- *     description: Atualiza os dados de um exame existente. Em desenvolvimento
- *     tags: [Exames]
+ *     summary: Atualizar prontuário
+ *     description: Atualiza um prontuário existente. Em desenvolvimento
+ *     tags: [Prontuários]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -163,7 +150,7 @@ router.post('/', (req, res) => {
  *         required: true
  *         schema:
  *           type: string
- *         description: ID do exame
+ *         description: ID do prontuário
  *     requestBody:
  *       required: true
  *       content:
@@ -171,15 +158,17 @@ router.post('/', (req, res) => {
  *           schema:
  *             type: object
  *             properties:
- *               resultado:
+ *               diagnostico:
  *                 type: string
- *                 example: Atualização dos resultados
+ *               sintomas:
+ *                 type: string
+ *               tratamento:
+ *                 type: string
  *               observacoes:
  *                 type: string
- *                 example: Observações adicionais
  *     responses:
  *       200:
- *         description: Exame atualizado
+ *         description: Prontuário atualizado
  *       501:
  *         description: Endpoint em desenvolvimento
  */
@@ -192,11 +181,11 @@ router.put('/:id', (req, res) => {
 
 /**
  * @swagger
- * /api/exames/{id}:
+ * /api/prontuarios/{id}:
  *   delete:
- *     summary: Deletar exame
- *     description: Remove um exame. Em desenvolvimento - requer perfil ADMIN
- *     tags: [Exames]
+ *     summary: Deletar prontuário
+ *     description: Remove um prontuário. Em desenvolvimento - requer perfil ADMIN
+ *     tags: [Prontuários]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -205,10 +194,10 @@ router.put('/:id', (req, res) => {
  *         required: true
  *         schema:
  *           type: string
- *         description: ID do exame
+ *         description: ID do prontuário
  *     responses:
  *       200:
- *         description: Exame deletado
+ *         description: Prontuário deletado
  *       501:
  *         description: Endpoint em desenvolvimento
  */
@@ -219,4 +208,4 @@ router.delete('/:id', (req, res) => {
   });
 });
 
-module.exports = router;
+export default router;

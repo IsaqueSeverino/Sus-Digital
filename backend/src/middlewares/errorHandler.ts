@@ -1,4 +1,6 @@
-const errorHandler = (err, req, res, next) => {
+import { Request, Response, NextFunction } from 'express';
+
+const errorHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
   console.error('❌ Erro capturado:', {
     message: err.message,
     stack: err.stack,
@@ -16,7 +18,6 @@ const errorHandler = (err, req, res, next) => {
       code: 'DUPLICATE_ENTRY'
     });
   }
-
   if (err.code === 'P2025') {
     return res.status(404).json({
       erro: 'Registro não encontrado',
@@ -24,7 +25,6 @@ const errorHandler = (err, req, res, next) => {
       code: 'NOT_FOUND'
     });
   }
-
   if (err.code === 'P2003') {
     return res.status(400).json({
       erro: 'Erro de relacionamento',
@@ -39,7 +39,6 @@ const errorHandler = (err, req, res, next) => {
       code: 'INVALID_TOKEN'
     });
   }
-
   if (err.name === 'TokenExpiredError') {
     return res.status(401).json({
       erro: 'Token expirado',
@@ -60,11 +59,11 @@ const errorHandler = (err, req, res, next) => {
     erro: err.message || 'Erro interno do servidor',
     code: 'INTERNAL_ERROR',
     timestamp: new Date().toISOString(),
-    ...(process.env.NODE_ENV === 'development' && { 
+    ...(process.env.NODE_ENV === 'development' && {
       stack: err.stack,
       details: err
     })
   });
 };
 
-module.exports = errorHandler;
+export default errorHandler;
