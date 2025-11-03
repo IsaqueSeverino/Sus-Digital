@@ -1,9 +1,7 @@
 import express from 'express';
 const router = express.Router();
-const consultaController = require('../controllers/consultaController');
-const { authenticate, authorize } = require('../middlewares/auth');
-
-router.use(authenticate);
+import consultaController from '../controllers/consultaController';
+import AuthMiddleware from '../middlewares/auth';
 
 /**
  * @swagger
@@ -62,37 +60,18 @@ router.use(authenticate);
  *                   $ref: '#/components/schemas/Consulta'
  *       400:
  *         description: Dados inválidos ou incompletos
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
  *       401:
  *         description: Token inválido ou ausente
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
  *       403:
  *         description: Acesso negado - requer perfil MEDICO ou ADMIN
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
  *       404:
  *         description: Paciente ou médico não encontrado
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
  *       500:
  *         description: Erro interno do servidor
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
  */
-router.post('/', 
-  authorize('MEDICO', 'ADMIN'), 
+router.post(
+  '/',
+  AuthMiddleware.authorize('MEDICO', 'ADMIN'),
   consultaController.criarConsulta
 );
 
@@ -142,24 +121,10 @@ router.post('/',
  *     responses:
  *       200:
  *         description: Lista de consultas retornada com sucesso
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Consulta'
  *       401:
  *         description: Token inválido ou ausente
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
  *       500:
  *         description: Erro interno do servidor
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
  */
 router.get('/', consultaController.listarConsultas);
 
@@ -183,38 +148,14 @@ router.get('/', consultaController.listarConsultas);
  *     responses:
  *       200:
  *         description: Dados da consulta retornados com sucesso
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Consulta'
  *       401:
  *         description: Token inválido ou ausente
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
  *       403:
- *         description: Acesso negado - você não tem permissão para ver esta consulta
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
+ *         description: Acesso negado - não tem permissão para ver esta consulta
  *       404:
  *         description: Consulta não encontrada
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 erro:
- *                   type: string
- *                   example: Consulta não encontrada
  *       500:
  *         description: Erro interno do servidor
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
  */
 router.get('/:id', consultaController.obterConsulta);
 
@@ -260,67 +201,23 @@ router.get('/:id', consultaController.obterConsulta);
  *                 type: string
  *                 description: Novas observações
  *                 example: Paciente confirma presença
- *           examples:
- *             confirmar:
- *               summary: Confirmar consulta
- *               value:
- *                 status: CONFIRMADA
- *             remarcar:
- *               summary: Remarcar consulta
- *               value:
- *                 dataHora: 2025-10-27T10:00:00.000Z
- *                 observacoes: Consulta remarcada a pedido do paciente
- *             cancelar:
- *               summary: Cancelar consulta
- *               value:
- *                 status: CANCELADA
- *                 observacoes: Paciente não pode comparecer
  *     responses:
  *       200:
  *         description: Consulta atualizada com sucesso
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   example: Consulta atualizada com sucesso
- *                 consulta:
- *                   $ref: '#/components/schemas/Consulta'
  *       400:
  *         description: Dados inválidos
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
  *       401:
  *         description: Token inválido ou ausente
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
  *       403:
  *         description: Acesso negado - requer perfil MEDICO ou ADMIN
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
  *       404:
  *         description: Consulta não encontrada
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
  *       500:
  *         description: Erro interno do servidor
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
  */
-router.put('/:id', 
-  authorize('MEDICO', 'ADMIN'), 
+router.put(
+  '/:id',
+  AuthMiddleware.authorize('MEDICO', 'ADMIN'),
   consultaController.atualizarConsulta
 );
 
@@ -344,41 +241,18 @@ router.put('/:id',
  *     responses:
  *       200:
  *         description: Consulta deletada com sucesso
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   example: Consulta deletada com sucesso
  *       401:
  *         description: Token inválido ou ausente
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
  *       403:
  *         description: Acesso negado - requer perfil ADMIN
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
  *       404:
  *         description: Consulta não encontrada
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
  *       500:
  *         description: Erro interno do servidor
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
  */
-router.delete('/:id', 
-  authorize('ADMIN'), 
+router.delete(
+  '/:id',
+  AuthMiddleware.authorize('ADMIN'),
   consultaController.deletarConsulta
 );
 
