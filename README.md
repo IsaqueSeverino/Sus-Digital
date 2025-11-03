@@ -42,25 +42,47 @@ SUS Digital é uma plataforma web completa para gerenciamento de processos de sa
 ## 🗄️ Estrutura de Pastas (Resumo)
 
 ```
-Sus-Digital/
+SUS-DIGITAL/
+├── assets/
 ├── backend/
-│   ├── src/
-│   │   ├── controllers/
-│   │   ├── services/
-│   │   ├── repositories/
-│   │   ├── middlewares/
-│   │   ├── routes/
-│   │   └── index.js
+│   ├── node_modules/
 │   ├── prisma/
-│   │   ├── schema.prisma
-│   │   └── migrations/
-│   ├── Dockerfile
+│   │   └── schema.prisma
+│   ├── src/
+│   │   ├── config/
+│   │   │   └── swagger.ts
+│   │   ├── controllers/
+│   │   │   ├── authController.ts
+│   │   │   ├── consultaController.ts
+│   │   │   └── usuarioController.ts
+│   │   ├── middlewares/
+│   │   │   ├── auth.ts
+│   │   │   ├── errorHandler.ts
+│   │   │   └── logger.ts
+│   │   ├── routes/
+│   │   │   ├── auth.ts
+│   │   │   ├── consultas.ts
+│   │   │   ├── exames.ts
+│   │   │   ├── medicos.ts
+│   │   │   ├── pacientes.ts
+│   │   │   ├── prontuarios.ts
+│   │   │   └── usuarios.ts
+│   │   ├── utils/
+│   │   │   ├── bcrypt.ts
+│   │   │   ├── jwt.ts
+│   │   │   └── seed.ts
+│   │   ├── app.ts
+│   │   └── server.ts
+│   ├── .env.example
+│   ├── .gitignore
 │   ├── docker-compose.yml
-│   └── package.json
-├── html/
+│   ├── Dockerfile
+│   ├── package-lock.json
+│   ├── package.json
+│   └── tsconfig.json
+├── conteudos/
 ├── css/
-├── js/
-└── assets/
+└── html/
 ```
 
 ## 🚀 Como rodar localmente
@@ -77,9 +99,15 @@ cd Sus-Digital
 #### Configure seu .env em /backend/.env:
 
 ```
-DATABASE_URL="postgresql://<user>:<password>@<host>:<port>/<dbname>?schema=public"
-JWT_SECRET="SUA_CHAVE_SECRETA_SEGURA"
+DATABASE_URL="postgresql://[user]%2Elpfoivzqxzowtaifrtdx:[senha]@aws-1-us-east-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
+
+# JWT
+JWT_SECRET=""
+JWT_EXPIRES_IN="24h"
+
+# Server
 PORT=3000
+NODE_ENV="development"
 ````
 
 ### 3. Suba os containers com Docker Compose
